@@ -14,7 +14,7 @@ class UserBasicInformationWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 10, left: 10),
             child: Text(
-              "Informações Básicas",
+              "Informações Básicas ",
               style: Theme.of(context).textTheme.title,
             ),
           ),
