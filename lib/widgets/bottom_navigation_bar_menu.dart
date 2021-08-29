@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/bottom-tab/account_page.dart';
+import 'package:housepass/pages/bottom-tab/account/account_page.dart';
 import 'package:housepass/pages/bottom-tab/notifications_page.dart';
 import 'package:housepass/pages/bottom-tab/search_page.dart';
 import 'package:housepass/pages/bottom-tab/timeline_page.dart';
@@ -32,6 +32,7 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar (
         title: Text('HousePass'),
         actions: <Widget>[

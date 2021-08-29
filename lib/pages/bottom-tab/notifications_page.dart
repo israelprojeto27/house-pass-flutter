@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/imovel/avaliacao/list_avaliacao_imovel_page.dart';
-import 'package:housepass/pages/imovel/comentario/list_comentario_page.dart';
-import 'package:housepass/pages/imovel/oferta/list_ofertas_page.dart';
-import 'package:housepass/pages/imovel/recomendacao/list_recomendacao_imovel_page.dart';
-import 'package:housepass/pages/imovel/visitante/list_visitantes_page.dart';
+import 'package:housepass/pages/imovel/avaliacao/view_one_avaliacao_imovel.dart';
+import 'package:housepass/pages/imovel/comentario/view_one_comentario_page.dart';
+import 'package:housepass/pages/imovel/oferta/view_one_oferta_page.dart';
+import 'package:housepass/pages/imovel/recomendacao/respond_recomendacao_imovel_page.dart';
+import 'package:housepass/pages/imovel/visitante/view_one_visitante_page.dart';
 import 'package:housepass/pages/user/avaliacao/list_avaliacao_user_page.dart';
+import 'package:housepass/pages/user/avaliacao/view_one_avaliacao_user_page.dart';
+import 'package:housepass/pages/user/convite/invite_received_respond.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
-import 'package:housepass/pages/user/recomendacao/list_recomendacao_user_page.dart';
+import 'package:housepass/pages/user/recomendacao/respond_recomendacao_user_page.dart';
 
 class NotificationsPage extends StatelessWidget {
   List<ItemNotification> notifications = _loadNotifications();
@@ -108,22 +110,28 @@ class NotificationsPage extends StatelessWidget {
     if (item.type == 'Oferta'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaOfertasPage()),
+        MaterialPageRoute(builder: (context) => ViewOneOfertaPage()),
       );
     }
     else if (item.type == 'Visitante'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaVisitantePage()),
+        MaterialPageRoute(builder: (context) => ViewOneVisitantePage()),
       );
     }
     else if (item.type == 'Comentario'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaComentariosPage()),
+        MaterialPageRoute(builder: (context) => ViewOneComentariosPage()),
       );
     }
-    else if ((item.type == 'Convite') || (item.type == 'Convidado')){
+    else if (item.type == 'Convite') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => InviteReceivedRespond()),
+      );
+    }
+    else if (item.type == 'Convidado'){
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => DetailUserPage()),
@@ -138,34 +146,28 @@ class NotificationsPage extends StatelessWidget {
     else if (item.type == 'AvaliacaoImovel'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaAvaliacaoImovelPage()),
+        MaterialPageRoute(builder: (context) => ViewOneAvaliacaoImovelPage()),
       );
     }
     else if (item.type == 'RecomendacaoImovel'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaRecomendacaoImovelPage()),
+        MaterialPageRoute(builder: (context) => RespondRecomendacaoImovelPage()),
       );
     }
     else if (item.type == 'AvaliacaoUsuario'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaAvaliacaoUserPage()),
+        MaterialPageRoute(builder: (context) => ViewOneAvaliacaoUserPage()),
       );
     }
     else if (item.type == 'RecomendacaoUsuario'){
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ListaRecomendacaoUserPage()),
+        MaterialPageRoute(builder: (context) => RespondRecomendacaoUserPage()),
       );
     }
   }
-
-
-
-
-
-
 }
 
 class ItemNotification {
