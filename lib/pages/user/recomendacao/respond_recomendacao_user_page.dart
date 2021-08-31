@@ -18,7 +18,7 @@ class _RespondRecomendacaoUserPageState extends State<RespondRecomendacaoUserPag
       appBar: AppBar(
         title: Text('Recomendação sobre o usuario'),
       ),
-      body: ListView (
+      body: ListView(
         children: [
           Center(
               child: Column(
