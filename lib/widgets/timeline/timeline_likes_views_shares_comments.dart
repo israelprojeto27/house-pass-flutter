@@ -15,8 +15,9 @@ class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatelessWidget {
             child: ListTile(
               leading: Container(
                 height: 15,
-                width: 300,
+                width: 350,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Icon(
                       Icons.thumb_up_alt,
@@ -26,7 +27,7 @@ class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      "120 likes",
+                      "120K likes",
                       style: TextStyle(fontSize: 12),
                     ),
                     SizedBox(

@@ -20,7 +20,9 @@ class AccountTimelineWidget extends StatelessWidget {
           ),
           Column(
               children:[
-                BasePost(),
+                BasePost('text'),
+                BasePost('image'),
+                BasePost('imovel'),
               ]
           ),
         ],

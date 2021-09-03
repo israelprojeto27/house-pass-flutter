@@ -29,7 +29,7 @@ class NotificationsPage extends StatelessWidget {
                     height: 100,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
-                          spreadRadius: 2, blurRadius: 0, color: Colors.grey)
+                          spreadRadius: 2, blurRadius: 0, color: Colors.black12)
                     ]),
                     margin: EdgeInsets.all(7),
                     child: Row(
