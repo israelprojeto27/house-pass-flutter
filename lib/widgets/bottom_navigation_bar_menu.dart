@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/bottom-tab/account/account_page.dart';
 import 'package:housepass/pages/bottom-tab/notifications_page.dart';
-import 'package:housepass/pages/bottom-tab/search_page.dart';
+import 'package:housepass/pages/bottom-tab/search/search_page.dart';
 import 'package:housepass/pages/bottom-tab/timeline_page.dart';
 
 import 'button_message_app_bar.dart';

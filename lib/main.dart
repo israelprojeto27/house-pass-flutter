@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/bottom-tab/message_page.dart';
 import 'package:housepass/routes/routes.dart';
