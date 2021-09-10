@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/user/configurations/configuration_user_page.dart';
+import 'package:housepass/pages/user/edit/edit_account_user_page.dart';
 
 class AccountProfileWidget extends StatelessWidget {
   @override
@@ -35,18 +37,32 @@ class AccountProfileWidget extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  child: Icon(
-                    Icons.edit,
+                  child:
+                  IconButton(
+                    icon: Icon (Icons.edit),
                     color: Colors.redAccent,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => EditAccountUserPage()),
+                      );
+                    },
                   ),
                   right: 10,
                   top: 110,
                 ),
                 Positioned(
-                  child: Icon(
-                    Icons.settings,
+                  child: IconButton(
+                    icon: Icon (Icons.settings),
                     color: Colors.redAccent,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ConfigurationUserPage()),
+                      );
+                    },
                   ),
+
                   right: 50,
                   top: 110,
                 ),
