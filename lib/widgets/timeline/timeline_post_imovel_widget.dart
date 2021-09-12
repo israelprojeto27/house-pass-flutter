@@ -21,6 +21,8 @@ class TimelinePostImovelDescriptionWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Luxo Palace Residence', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                Text('Leblon, Rio de Janeiro, RJ', style: TextStyle(fontSize: 16)),
+                SizedBox(height: 8),
                 Text('R\$ 1.500.00,00', style: TextStyle(fontSize: 22)),
                 SizedBox(height: 8),
                 Row(
