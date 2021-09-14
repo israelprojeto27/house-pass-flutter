@@ -5,9 +5,20 @@ import 'timeline_likes_views_shares_comments.dart';
 import 'timeline_person_info.dart';
 import 'timeline_post_text_widget.dart';
 
-class BasePost extends StatelessWidget {
+class BasePost extends StatefulWidget {
+
   final String typePost;
   BasePost(this.typePost);
+
+  @override
+  _BasePostState createState() => _BasePostState();
+}
+
+class _BasePostState extends State<BasePost> {
+
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +27,9 @@ class BasePost extends StatelessWidget {
       margin: EdgeInsets.all(0),
       child: Column(
         children: <Widget>[
-          TimelineInfoPersonPostWidget(),
-          TimelinePostTextDescriptionWidget(),
-          _loadPostByType(typePost),
+          TimelineInfoPersonPostWidget(widget.typePost),
+          TimelinePostTextDescriptionWidget(widget.typePost),
+          _loadPostByType(widget.typePost),
           TimelinePostQuantLikesViewsSharesCommentsWidget()
         ],
       ),
@@ -41,3 +52,5 @@ class BasePost extends StatelessWidget {
     }
   }
 }
+
+

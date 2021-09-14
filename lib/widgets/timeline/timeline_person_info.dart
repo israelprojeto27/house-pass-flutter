@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
-class TimelineInfoPersonPostWidget extends StatelessWidget {
+class TimelineInfoPersonPostWidget extends StatefulWidget {
+
+  final String typePost;
+
+  const TimelineInfoPersonPostWidget(this.typePost);
+
+  @override
+  _TimelineInfoPersonPostWidgetState createState() => _TimelineInfoPersonPostWidgetState();
+}
+
+class _TimelineInfoPersonPostWidgetState extends State<TimelineInfoPersonPostWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -8,11 +19,18 @@ class TimelineInfoPersonPostWidget extends StatelessWidget {
         leading: Container(
             width: 50,
             height: 40,
-            child: Image.asset('assets/images/user/img_roana.jpg')
+            child: Image.asset('assets/images/user/img_eu_jitjitsu.jpg')
         ),
-        title: Text("Roana Robredo"),
+        title: Text("Israel Barreto"),
         subtitle: Text("Corretor", style: TextStyle(color: Colors.red),),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailUserPage()),
+          );
+        },
       ),
     );
   }
 }
+
