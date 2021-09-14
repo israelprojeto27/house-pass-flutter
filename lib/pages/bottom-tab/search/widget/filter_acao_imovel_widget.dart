@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FilterTipoAcaoWidget extends StatefulWidget {
+
+  final Function onChanged;
+
+  FilterTipoAcaoWidget({required this.onChanged});
+
   @override
   _FilterTipoAcaoWidgetState createState() => _FilterTipoAcaoWidgetState();
 }
@@ -39,6 +44,7 @@ class _FilterTipoAcaoWidgetState extends State<FilterTipoAcaoWidget> {
                     setState(() {
                       radioButtonItem = 'Venda';
                       id = 1;
+                      widget.onChanged(radioButtonItem);
                     });
                   },),
                   Text(
@@ -51,6 +57,7 @@ class _FilterTipoAcaoWidgetState extends State<FilterTipoAcaoWidget> {
                     setState(() {
                       radioButtonItem = 'Aluguel';
                       id = 2;
+                      widget.onChanged(radioButtonItem);
                     });
                   },),
                   Text(
@@ -64,6 +71,7 @@ class _FilterTipoAcaoWidgetState extends State<FilterTipoAcaoWidget> {
                     setState(() {
                       radioButtonItem = 'Temporada';
                       id = 3;
+                      widget.onChanged(radioButtonItem);
                     });
                   },),
                   Text(

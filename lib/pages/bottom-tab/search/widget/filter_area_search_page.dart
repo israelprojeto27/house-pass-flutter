@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FilterAreaSearchPage extends StatefulWidget {
+
+  final Function onChanged;
+
+  const FilterAreaSearchPage({required this.onChanged});
+
   @override
   _FilterAreaSearchPageState createState() => _FilterAreaSearchPageState();
 }
@@ -38,6 +43,7 @@ class _FilterAreaSearchPageState extends State<FilterAreaSearchPage> {
             onChanged: (RangeValues values) {
               setState(() {
                 _currentRangeValues = values;
+                widget.onChanged(values);
               });
             },
           ),

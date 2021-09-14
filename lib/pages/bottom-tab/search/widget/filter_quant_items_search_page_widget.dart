@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'filter_area_search_page.dart';
 import 'item_filter_quant_search_page.dart';
 
 
 class FilterQuantItemsSearchPage  extends StatefulWidget {
+
+  final Function onChangedBanheiro;
+  final Function onChangedGaragem;
+  final Function onChangedQuarto;
+  final Function onChangedSuite;
+
+  const FilterQuantItemsSearchPage({required this.onChangedBanheiro,
+                                    required this.onChangedGaragem,
+                                    required this.onChangedQuarto,
+                                    required this.onChangedSuite});
 
   @override
   _FilterQuantItemsSearchPageState createState() => _FilterQuantItemsSearchPageState();
@@ -12,7 +20,6 @@ class FilterQuantItemsSearchPage  extends StatefulWidget {
 
 class _FilterQuantItemsSearchPageState extends State<FilterQuantItemsSearchPage > {
 
-  var _valuesList = ['0','1', '2', '3', '4', '5', '6 0u mais'];
   String dropdownValue = '0';
 
   @override
@@ -41,15 +48,15 @@ class _FilterQuantItemsSearchPageState extends State<FilterQuantItemsSearchPage 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ItemFilterQuantSearchPage('Banheiro'),
-                      ItemFilterQuantSearchPage('Garagem'),
+                      ItemFilterQuantSearchPage(label: 'Banheiro', onChanged: widget.onChangedBanheiro),
+                      ItemFilterQuantSearchPage(label:'Garagem', onChanged: widget.onChangedGaragem),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ItemFilterQuantSearchPage('Quarto'),
-                      ItemFilterQuantSearchPage('Suite'),
+                      ItemFilterQuantSearchPage(label:'Quarto', onChanged: widget.onChangedQuarto),
+                      ItemFilterQuantSearchPage(label:'Suite', onChanged:  widget.onChangedSuite),
                     ],
                   ),
                 ],

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
 class FilterPriceSearchPageWidget extends StatefulWidget {
+
+  final Function onChanged;
+
+  FilterPriceSearchPageWidget({required this.onChanged});
+
   @override
   _FilterPriceSearchPageState createState() => _FilterPriceSearchPageState();
 }
 
 class _FilterPriceSearchPageState extends State<FilterPriceSearchPageWidget> {
-  RangeValues _currentRangeValues = const RangeValues(0, 10000);
+  RangeValues _currentRangeValues = const RangeValues(0, 100000);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +42,7 @@ class _FilterPriceSearchPageState extends State<FilterPriceSearchPageWidget> {
             onChanged: (RangeValues values) {
               setState(() {
                 _currentRangeValues = values;
+                widget.onChanged(values);
               });
             },
           ),

@@ -3,6 +3,11 @@ import 'package:direct_select/direct_select.dart';
 
 
 class FilterTipoImovelWidget extends StatefulWidget {
+
+  final Function onChanged;
+
+  const FilterTipoImovelWidget({required this.onChanged});
+
   @override
   _FilterTipoImovelWidgetState createState() => _FilterTipoImovelWidgetState();
 }
@@ -66,6 +71,7 @@ class _FilterTipoImovelWidgetState extends State<FilterTipoImovelWidget> {
                         setState(() {
                           id = index;
                           print('Index selecionado: ${index}'  );
+                          widget.onChanged(index);
                         });
                       },
                       items: _buildItems1()),

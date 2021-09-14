@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ItemFilterQuantSearchPage extends StatefulWidget {
 
   final String label;
+  final Function onChanged;
 
-  ItemFilterQuantSearchPage(this.label);
+  ItemFilterQuantSearchPage({required this.label, required this.onChanged});
 
   @override
   _ItemFilterQuantSearchPageState createState() =>
@@ -54,6 +55,7 @@ class _ItemFilterQuantSearchPageState extends State<ItemFilterQuantSearchPage> {
               onChanged: (String? newValue) {
                 setState(() {
                   dropdownValue = newValue!;
+                  widget.onChanged(dropdownValue);
                 });
               },
             ),

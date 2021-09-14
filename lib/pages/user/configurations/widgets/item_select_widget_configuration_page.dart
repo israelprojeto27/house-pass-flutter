@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ItemSelectConfigurationPage extends StatefulWidget {
-  final String label;
 
-  ItemSelectConfigurationPage(this.label);
+  final String label;
+  final String defaultValue;
+  final Function onChanged;
+
+  ItemSelectConfigurationPage({required this.label, required this.defaultValue, required this.onChanged});
 
   @override
   _ItemSelectConfigurationPageState createState() =>
@@ -21,7 +24,7 @@ class _ItemSelectConfigurationPageState  extends State<ItemSelectConfigurationPa
       children: [
         Text(widget.label),
         DropdownButton(
-          value: dropdownValue,
+          value: widget.defaultValue,
           elevation: 16,
           underline: Container(
             color: Colors.transparent,
@@ -38,6 +41,7 @@ class _ItemSelectConfigurationPageState  extends State<ItemSelectConfigurationPa
           onChanged: (String? newValue) {
             setState(() {
               dropdownValue = newValue!;
+              widget.onChanged(newValue);
             });
           },
         ),

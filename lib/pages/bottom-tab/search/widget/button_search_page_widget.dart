@@ -1,6 +1,32 @@
 import 'package:flutter/material.dart';
 
-class ButtonSearchPageWidget extends StatelessWidget {
+class ButtonSearchPageWidget extends StatefulWidget {
+
+  final RangeValues priceValue;
+  final String tipoAcao;
+  final int indexTipoImovel;
+  final String quantBanheiro;
+  final String quantGaragem;
+  final String quantQuarto;
+  final String quantSuite;
+  final RangeValues areaValue;
+
+  ButtonSearchPageWidget(this.priceValue,
+                         this.tipoAcao,
+                         this.indexTipoImovel,
+                         this.quantBanheiro,
+                         this.quantGaragem,
+                         this.quantQuarto,
+                         this.quantSuite,
+                         this.areaValue);
+
+  @override
+  _ButtonSearchPageWidgetState createState() => _ButtonSearchPageWidgetState();
+}
+
+class _ButtonSearchPageWidgetState extends State<ButtonSearchPageWidget> {
+
+  TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container (
@@ -28,6 +54,7 @@ class ButtonSearchPageWidget extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 16, right: 16, top: 4, bottom: 4),
                     child: TextField(
+                      controller: _controller,
                       onChanged: (String txt) {},
                       style: const TextStyle(
                         fontSize: 18,
@@ -65,10 +92,27 @@ class ButtonSearchPageWidget extends StatelessWidget {
                     FocusScope.of(context).requestFocus(FocusNode());
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Icon(Icons.search,
-                        size: 20,
-                        color: Colors.black),
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                        onPressed: () {
+                          print("Localizacao informada: " + _controller.text.toString());
+                          print("Valor maximo: " + widget.priceValue.end.toString());
+                          print("Valor minimo: " + widget.priceValue.start.toString());
+                          print("Tipo Acao: " + widget.tipoAcao);
+                          print("Index Tipo Imovel: " + widget.indexTipoImovel.toString());
+                          print("Quant. Garagem: " + widget.quantGaragem);
+                          print("Quant. Banheiro: " + widget.quantBanheiro);
+                          print("Quant. Suite: " + widget.quantSuite);
+                          print("Quant. Quarto: " + widget.quantQuarto);
+
+                          print("Area maximo: " + widget.areaValue.end.toString());
+                          print("Area minimo: " + widget.areaValue.start.toString());
+                        },
+                        icon: Icon(
+                          Icons.search,
+                          size: 20,
+                          color: Colors.black,
+                        )),
                   ),
                 ),
               ),
@@ -79,3 +123,4 @@ class ButtonSearchPageWidget extends StatelessWidget {
     );
   }
 }
+
