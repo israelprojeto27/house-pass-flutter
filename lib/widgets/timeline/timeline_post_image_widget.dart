@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/timeline/detail_post_type_image.dart';
+import 'package:housepass/pages/timeline/detail_post_timeline.dart';
 
 class TimelinePostImageDescriptionWidget extends StatelessWidget {
   @override
@@ -9,7 +9,7 @@ class TimelinePostImageDescriptionWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailPostTypeImage()),
+          MaterialPageRoute(builder: (context) => DetailPostTimeline('image')),
         );
       },
       child: Container(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/timeline/detail_post_type_image.dart';
-import 'package:housepass/pages/timeline/detail_post_type_imovel.dart';
-import 'package:housepass/pages/timeline/detail_post_type_text.dart';
+import 'package:housepass/pages/timeline/detail_post_timeline.dart';
+
 
 class TimelinePostTextDescriptionWidget extends StatefulWidget {
 
@@ -22,25 +21,10 @@ class _TimelinePostTextDescriptionWidgetState extends State<TimelinePostTextDesc
       width:  MediaQuery.of(context).size.width,
       child: InkWell(
         onTap: () {
-
-          if ( widget.typePost == 'text'){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailPostTypeText()),
-            );
-          }
-          else if ( widget.typePost == 'image'){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailPostTypeImage()),
-            );
-          }
-          else if ( widget.typePost == 'imovel'){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => DetailPostTypeImovel()),
-            );
-          }
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DetailPostTimeline(widget.typePost)),
+          );
         },
         child: Text(
           'Novos empreendimentos de luxo vão ser lançados em breve na região da Barra da tijuca e recreio',

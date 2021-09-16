@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/timeline/detail_post_type_imovel.dart';
+import 'package:housepass/pages/timeline/detail_post_timeline.dart';
 
 class TimelinePostImovelDescriptionWidget extends StatelessWidget {
   @override
@@ -9,7 +9,7 @@ class TimelinePostImovelDescriptionWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailPostTypeImovel()),
+          MaterialPageRoute(builder: (context) => DetailPostTimeline('imovel')),
         );
       },
       child: Container(

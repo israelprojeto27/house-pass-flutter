@@ -27,7 +27,7 @@ class _BasePostState extends State<BasePost> {
       margin: EdgeInsets.all(0),
       child: Column(
         children: <Widget>[
-          TimelineInfoPersonPostWidget(widget.typePost),
+          TimelineInfoPersonPostWidget(),
           TimelinePostTextDescriptionWidget(widget.typePost),
           _loadPostByType(widget.typePost),
           TimelinePostQuantLikesViewsSharesCommentsWidget()

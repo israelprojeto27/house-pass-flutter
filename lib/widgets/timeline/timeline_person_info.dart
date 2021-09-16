@@ -3,9 +3,6 @@ import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class TimelineInfoPersonPostWidget extends StatefulWidget {
 
-  final String typePost;
-
-  const TimelineInfoPersonPostWidget(this.typePost);
 
   @override
   _TimelineInfoPersonPostWidgetState createState() => _TimelineInfoPersonPostWidgetState();
