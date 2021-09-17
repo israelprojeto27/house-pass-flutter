@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/bottom-tab/account/account_page.dart';
+import 'package:housepass/pages/bottom-tab/publish_page.dart';
 import 'package:housepass/pages/bottom-tab/notifications_page.dart';
 import 'package:housepass/pages/bottom-tab/search/search_page.dart';
 import 'package:housepass/pages/bottom-tab/timeline_page.dart';
@@ -20,6 +21,7 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
     TimelinePage(),
     SearchPage(),
     NotificationsPage(),
+    PublishPage(),
     AccountPage(),
   ];
 
@@ -47,6 +49,7 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
               BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
+              BottomNavigationBarItem(icon: Icon(Icons.add_box), label: 'Publicação'),
               BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
           ],
         currentIndex: _selectedIndex,
@@ -57,3 +60,4 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
     );
   }
 }
+

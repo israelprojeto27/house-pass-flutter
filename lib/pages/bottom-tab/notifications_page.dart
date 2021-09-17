@@ -5,7 +5,6 @@ import 'package:housepass/pages/imovel/comentario/view_one_comentario_page.dart'
 import 'package:housepass/pages/imovel/oferta/view_one_oferta_page.dart';
 import 'package:housepass/pages/imovel/recomendacao/respond_recomendacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/visitante/view_one_visitante_page.dart';
-import 'package:housepass/pages/user/avaliacao/list_avaliacao_user_page.dart';
 import 'package:housepass/pages/user/avaliacao/view_one_avaliacao_user_page.dart';
 import 'package:housepass/pages/user/convite/invite_received_respond.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
