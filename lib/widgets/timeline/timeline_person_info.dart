@@ -5,7 +5,6 @@ import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class TimelineInfoPersonPostWidget extends StatefulWidget {
 
-
   @override
   _TimelineInfoPersonPostWidgetState createState() => _TimelineInfoPersonPostWidgetState();
 }

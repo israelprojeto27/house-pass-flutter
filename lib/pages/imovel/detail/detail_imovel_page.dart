@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/widgets/widget_detail_imovel_in_lists.dart';
 
-import 'item_quant_item_imovel_widget.dart';
-import 'item_valor_imovel_widget.dart';
+import 'card_avaliacoes_detail_imovel_widget.dart';
+import 'card_descricao_detail_imovel_widget.dart';
+import 'card_info_basica_detail_imovel_widget.dart';
+import 'card_ofertas_detail_imovel_widget.dart';
+import 'card_recomendacoes_detail_imovel_widget.dart';
+import 'card_usuario_detail_imovel_widget.dart';
+import 'card_valores_imovel_detail_widget.dart';
+
 
 class DetailImovelPage extends StatefulWidget {
   @override
@@ -24,80 +30,34 @@ class _DetailImovelPageState extends State<DetailImovelPage> {
               SizedBox(
                 height: 24,
               ),
-              Card(
-                elevation: 8,
-                margin: EdgeInsets.all(8),
-                child: ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Descrição"),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                        'Imóvel padrão luxo, bem localizado, otimo espaço, proximo à praia e bem seguro'),
-                  ),
-                ),
-              ),
+              CardDescricaoDetailImovelWidget('Imóvel padrão luxo, bem localizado, otimo espaço, proximo à praia e bem seguro'),
               SizedBox(
                 height: 8,
               ),
-              Card(
-                elevation: 8,
-                margin: EdgeInsets.all(8),
-                child: ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Informações Básicas"),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            ItemQuantItemWidget('Banheiro', '2'),
-                            ItemQuantItemWidget('Garagem', '1')
-                          ],
-                        ),
-                        SizedBox(height: 8,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            ItemQuantItemWidget('Suite', '1'),
-                            ItemQuantItemWidget('Quarto', '3')
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              CardInfoBasicaDetailImovelWidget(),
               SizedBox(
                 height: 8,
               ),
-              Card(
-                elevation: 8,
-                margin: EdgeInsets.all(8),
-                child: ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Valores Imóvel'),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        ItemValorImovelWidget('IPTU', 'R\$ 800,00'),
-                        ItemValorImovelWidget('Condominio', 'R\$ 1.200,00'),
-                        ItemValorImovelWidget('Outras Taxas', 'R\$ 500,00'),
-                      ],
-                    ),
-                  ),
-
-                ),
-              )
+              CardValoresImovelDetailImovelWidget(),
+              SizedBox(
+                height: 8,
+              ),
+              CardUsuarioDetailImovelWidget(),
+              SizedBox(
+                height: 8,
+              ),
+              CardOfertasDetailImovelWidget(),
+              SizedBox(
+                height: 8,
+              ),
+              CardRecomendacoesDetailImovelWidget(),
+              SizedBox(
+                height: 8,
+              ),
+              CardAvaliacoesDetailImovelWidget(),
+              SizedBox(
+                height: 8,
+              ),
             ],
           ),
         ));
