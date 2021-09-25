@@ -20,7 +20,7 @@ class AccountPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AccountProfileWidget(),
+            AccountProfileWidget(true),
             AccountBasicInformationWidget(),
             AccountConnectionsWidget(),
             AccountRecommendationsWidget(),

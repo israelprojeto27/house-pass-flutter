@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/avliacao_user_model.dart';
 import 'package:housepass/pages/imovel/avaliacao/create_avaliacao_imovel_page.dart';
+import 'package:housepass/pages/imovel/avaliacao/list_avaliacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/oferta/list_ofertas_page.dart';
 
 class CardAvaliacoesDetailImovelWidget extends StatefulWidget {
   @override
-  _CardAvaliacoesDetailImovelWidgetState createState() => _CardAvaliacoesDetailImovelWidgetState();
+  _CardAvaliacoesDetailImovelWidgetState createState() =>
+      _CardAvaliacoesDetailImovelWidgetState();
 }
 
-class _CardAvaliacoesDetailImovelWidgetState extends State<CardAvaliacoesDetailImovelWidget> {
+class _CardAvaliacoesDetailImovelWidgetState
+    extends State<CardAvaliacoesDetailImovelWidget> {
   List<AvaliacaoUser> avaliacoes = _loadAvaliacoesImovel();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 520,
+      height: 420,
       child: Card(
         elevation: 8,
         margin: EdgeInsets.all(8),
@@ -28,79 +31,36 @@ class _CardAvaliacoesDetailImovelWidgetState extends State<CardAvaliacoesDetailI
           ),
           subtitle: Column(
             children: [
-              Container(
-                  margin: EdgeInsets.only(left: 8, top: 15, right: 16),
-                  height: 350,
-                  child: ListView.builder(
-                      itemCount: avaliacoes.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        AvaliacaoUser avaliacao = avaliacoes[index];
-                        return Container(
-                            child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                    height: 70,
-                                    width: 70,
-                                    child: (ClipRRect(
-                                      child:
-                                          Image.asset(avaliacao.userImageUrl),
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(40)),
-                                    ))),
-                                Expanded(
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        left: 15, right: 10, top: 10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(avaliacao.userName,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18)),
-                                        SizedBox(
-                                          height: 8,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Icon(Icons.star),
-                                            Icon(Icons.star),
-                                            Icon(Icons.star),
-                                            Icon(Icons.star),
-                                            Icon(Icons.star),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 16,
-                                        ),
-                                        Text(avaliacao.dataAvaliacao,
-                                            style: TextStyle(fontSize: 14)),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
+              Column(
+                children: avaliacoes
+                    .map((item) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListTile(
+                            leading: ClipOval(
+                              child: Image.asset(item.userImageUrl),
                             ),
-                            Row(children: [
-                              Expanded(
-                                child: new Container(
-                                    child: Divider(
-                                  color: Colors.black,
-                                  height: 16,
-                                )),
+                            title: Container(
+                              margin: EdgeInsets.only(top: 5),
+                              child: Text(item.userName),
+                            ),
+                            subtitle: Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                  Icon(Icons.star),
+                                ],
                               ),
-                            ]),
-                            SizedBox(
-                              height: 10,
-                            )
-                          ],
-                        ));
-                      })),
+                            ),
+                          ),
+                    ))
+                    .toList(),
+              ),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Center(
                 child: ElevatedButton(
@@ -109,11 +69,11 @@ class _CardAvaliacoesDetailImovelWidgetState extends State<CardAvaliacoesDetailI
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ListaOfertasPage()),
+                          builder: (context) => ListaAvaliacaoImovelPage()),
                     );
                   },
                 ),
-              ),
+              )
             ],
           ),
           trailing: PopupMenuButton<String>(
@@ -132,8 +92,9 @@ class _CardAvaliacoesDetailImovelWidgetState extends State<CardAvaliacoesDetailI
       ),
     );
   }
+
   void choiceAction(String value) {
-    if ( value == 'Adicionar Avaliação'){
+    if (value == 'Adicionar Avaliação') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => CreateAvaliacaoImovelPage()),
@@ -158,8 +119,6 @@ class _CardAvaliacoesDetailImovelWidgetState extends State<CardAvaliacoesDetailI
 
     return list;
   }
-
-
 }
 
 class Constants {

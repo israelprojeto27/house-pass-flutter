@@ -3,6 +3,11 @@ import 'package:housepass/pages/user/configurations/configuration_user_page.dart
 import 'package:housepass/pages/user/edit/edit_account_user_page.dart';
 
 class AccountProfileWidget extends StatelessWidget {
+
+  final bool isAccount;
+
+  const AccountProfileWidget(this.isAccount);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,36 +41,10 @@ class AccountProfileWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(
-                  child:
-                  IconButton(
-                    icon: Icon (Icons.edit),
-                    color: Colors.redAccent,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => EditAccountUserPage()),
-                      );
-                    },
-                  ),
-                  right: 10,
-                  top: 110,
-                ),
-                Positioned(
-                  child: IconButton(
-                    icon: Icon (Icons.settings),
-                    color: Colors.redAccent,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ConfigurationUserPage()),
-                      );
-                    },
-                  ),
+                _loadButtonConfigurations(context, this.isAccount),
+                _loadButtonEdit(context, this.isAccount),
+                _loadButtonInviteConnection(context, this.isAccount),
 
-                  right: 50,
-                  top: 110,
-                ),
                 SizedBox(height: 25)
               ],
             ),
@@ -104,5 +83,68 @@ class AccountProfileWidget extends StatelessWidget {
             )
           ],
         ));
+  }
+
+  _loadButtonConfigurations(BuildContext context, bool isAccount) {
+    if ( isAccount ){
+      return Positioned(
+        child:
+        IconButton(
+          icon: Icon (Icons.edit),
+          color: Colors.redAccent,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditAccountUserPage()),
+            );
+          },
+        ),
+        right: 10,
+        top: 110,
+      );
+    }
+    else {
+      return Container();
+    }
+
+  }
+
+  _loadButtonEdit(BuildContext context, bool isAccount) {
+    if ( isAccount ){
+      return  Positioned(
+        child: IconButton(
+          icon: Icon (Icons.settings),
+          color: Colors.redAccent,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ConfigurationUserPage()),
+            );
+          },
+        ),
+        right: 50,
+        top: 110,
+      );
+    }
+    else {
+      return Container();
+    }
+  }
+
+  _loadButtonInviteConnection(BuildContext context, bool isAccount) {
+    if (!isAccount){
+      return Positioned(
+        child: ElevatedButton(
+          child: Text('Enviar Convite'),
+          onPressed: () {
+          },
+        ),
+        right: 50,
+        top: 110,
+      );
+    }
+    else {
+      return Container();
+    }
   }
 }
