@@ -1,5 +1,5 @@
 
-class ItemRecomendacaoImovel {
+class RecomendacaoImovel {
 
   String descricaoRecomendacao;
   String userName;
@@ -7,5 +7,5 @@ class ItemRecomendacaoImovel {
   String userImageUrl;
   String dataRecomendacao;
 
-  ItemRecomendacaoImovel(this.descricaoRecomendacao, this.userName, this.userId, this.userImageUrl, this.dataRecomendacao);
+  RecomendacaoImovel(this.descricaoRecomendacao, this.userName, this.userId, this.userImageUrl, this.dataRecomendacao);
 }

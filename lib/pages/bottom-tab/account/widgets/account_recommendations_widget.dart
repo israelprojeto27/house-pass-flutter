@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/models/recomendacao_user_model.dart';
+import 'package:housepass/pages/user/recommendation/list_recommendations_user_page.dart';
 
 
 class AccountRecommendationsWidget extends StatelessWidget {
+
+  List<RecomendacaoUserModel> recomendacoes = _loadRecomendacoesUser();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,35 +26,62 @@ class AccountRecommendationsWidget extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 20),
             child: Column(
-                children:[
-                  ListTile(
-                    leading: ClipOval(child: Image.asset('assets/images/user/img_roana.jpg'),),
-                    title: Text("Roana Robredo"),
-                    subtitle: Text("A Claudia é uma excelente profissional com larga experiencia no mercado", style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic),),
-                  ),
-                  SizedBox(height: 20,),
-                  ListTile(
-                    leading: ClipOval(child: Image.asset('assets/images/user/img_veronica.jpg'),),
-                    title: Text("Veronica Duraes"),
-                    subtitle: Text("Fiz muitos negócios com a Claúdia e ela sempre foi uma excelente profissional", style: TextStyle(color: Colors.red, fontStyle: FontStyle.italic),),
-                  ),
-                  SizedBox(height: 20,),
-                  ListTile(
-                    leading: ClipOval(child: Image.asset('assets/images/user/img_raphael.jpg'),),
-                    title: Text("Lannes Neves"),
-                    subtitle: Text("Grande corretora do Rio de Janeiro e eu aprovo", style: TextStyle(color: Colors.red),),
-                  ),SizedBox(height: 20,),
-                  Center(
+              children: [
+                Column(
+                  children: recomendacoes
+                      .map((item) => ListTile(
+                    leading: ClipOval(
+                      child: Image.asset(item.userImageUrl),
+                    ),
+                    title: Text(item.userName),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      SizedBox(height: 4,),
+                        Text(
+                          item.descricaoRecomendacao,
+                          style: TextStyle(
+                              color: Colors.red),
+                        ),
+                        SizedBox(height: 16,)
+                      ],
+                    ),
+                    isThreeLine: true,))
+                      .toList(),
+                ),
+                SizedBox(height: 8,),
+                Center(
                     child: ElevatedButton(
                       child: Text('Ver mais'),
-                      onPressed: () { },
-                    ),
-                  ),
-                ]
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ListRecommendationsUserPage()),
+                        );
+                      },
+                    )
+                ),
+                SizedBox(height: 20,),
+              ],
             ),
           ),
         ],
       ),
     );
+  }
+
+  static List<RecomendacaoUserModel> _loadRecomendacoesUser() {
+
+    List<RecomendacaoUserModel> list = [];
+    RecomendacaoUserModel recommendation = RecomendacaoUserModel('Raphael Pinheiro', 'assets/images/user/img_raphael.jpg', 'Corretor', '1', 'A Claudia é uma excelente profissional com larga experiencia no mercado');
+    list.add(recommendation);
+
+    recommendation = RecomendacaoUserModel('Veronica Duraes', 'assets/images/user/img_veronica.jpg', 'Cliente', '2', 'Fiz muitos negócios com a Claúdia e ela sempre foi uma excelente profissional');
+    list.add(recommendation);
+
+    recommendation = RecomendacaoUserModel('Roana Robredo', 'assets/images/user/img_roana.jpg', 'Cliente', '3', 'Grande corretora do Rio de Janeiro e eu aprovo');
+    list.add(recommendation);
+
+    return list;
   }
 }

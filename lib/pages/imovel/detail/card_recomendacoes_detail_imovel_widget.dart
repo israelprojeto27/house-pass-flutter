@@ -12,7 +12,7 @@ class CardRecomendacoesDetailImovelWidget extends StatefulWidget {
 
 class _CardRecomendacoesDetailImovelWidgetState
     extends State<CardRecomendacoesDetailImovelWidget> {
-  List<ItemRecomendacaoImovel> recomendacoes = _loadRecomendacoesImovel();
+  List<RecomendacaoImovel> recomendacoes = _loadRecomendacoesImovel();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,8 @@ class _CardRecomendacoesDetailImovelWidgetState
                     );
                   },
                 ),
-              )
+              ),
+              SizedBox(height: 20,),
             ],
           ),
           trailing: PopupMenuButton<String>(
@@ -106,10 +107,10 @@ class _CardRecomendacoesDetailImovelWidgetState
     }
   }
 
-  static List<ItemRecomendacaoImovel> _loadRecomendacoesImovel() {
-    List<ItemRecomendacaoImovel> list = [];
+  static List<RecomendacaoImovel> _loadRecomendacoesImovel() {
+    List<RecomendacaoImovel> list = [];
 
-    ItemRecomendacaoImovel item = ItemRecomendacaoImovel(
+    RecomendacaoImovel item = RecomendacaoImovel(
         'Excelente empreendimento, vale a pena',
         'Lannes Neves',
         '1',
@@ -117,11 +118,11 @@ class _CardRecomendacoesDetailImovelWidgetState
         '22/02/2021');
     list.add(item);
 
-    item = ItemRecomendacaoImovel('Bem localizado e luxuoso', 'Joyce Tavares',
+    item = RecomendacaoImovel('Bem localizado e luxuoso', 'Joyce Tavares',
         '2', 'assets/images/user/img_veronica.jpg', '13/05/2021');
     list.add(item);
 
-    item = ItemRecomendacaoImovel(
+    item = RecomendacaoImovel(
         'Ótimo espaço e perto da praia',
         'Francyne Barreto',
         '1',

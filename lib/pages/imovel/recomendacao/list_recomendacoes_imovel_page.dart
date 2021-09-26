@@ -10,7 +10,7 @@ class ListRecomendacoesImovelPage extends StatefulWidget {
 
 class _ListRecomendacoesImovelPageState
     extends State<ListRecomendacoesImovelPage> {
-  List<ItemRecomendacaoImovel> recomendacoes = _loadRecomendacoes();
+  List<RecomendacaoImovel> recomendacoes = _loadRecomendacoes();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _ListRecomendacoesImovelPageState
               child: ListView.builder(
                   itemCount: recomendacoes.length,
                   itemBuilder: (BuildContext context, int index) {
-                    ItemRecomendacaoImovel recomendacao = recomendacoes[index];
+                    RecomendacaoImovel recomendacao = recomendacoes[index];
                     return Container(
                         child: Column(
                       children: [
@@ -95,9 +95,9 @@ class _ListRecomendacoesImovelPageState
     );
   }
 
-  static List<ItemRecomendacaoImovel> _loadRecomendacoes() {
-    List<ItemRecomendacaoImovel> list = [];
-    ItemRecomendacaoImovel item = ItemRecomendacaoImovel(
+  static List<RecomendacaoImovel> _loadRecomendacoes() {
+    List<RecomendacaoImovel> list = [];
+    RecomendacaoImovel item = RecomendacaoImovel(
         'excelente empreendimento',
         'Veronica Duraes',
         '1',
@@ -105,11 +105,11 @@ class _ListRecomendacoesImovelPageState
         '11/01/2020');
     list.add(item);
 
-    item = ItemRecomendacaoImovel('imovel de alto padrão', 'Lannes Neves', '2',
+    item = RecomendacaoImovel('imovel de alto padrão', 'Lannes Neves', '2',
         'assets/images/user/img_lannes.jpg', '15/03/2020');
     list.add(item);
 
-    item = ItemRecomendacaoImovel('eu super recomendo', 'Francyne Neves', '3',
+    item = RecomendacaoImovel('eu super recomendo', 'Francyne Neves', '3',
         'assets/images/user/img_francine.jpg', '21/03/2020');
     list.add(item);
 

@@ -5,10 +5,10 @@ import 'package:housepass/pages/imovel/comentario/view_one_comentario_page.dart'
 import 'package:housepass/pages/imovel/oferta/view_one_oferta_page.dart';
 import 'package:housepass/pages/imovel/recomendacao/respond_recomendacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/visitante/view_one_visitante_page.dart';
-import 'package:housepass/pages/user/avaliacao/view_one_avaliacao_user_page.dart';
-import 'package:housepass/pages/user/convite/invite_received_respond.dart';
+import 'package:housepass/pages/user/evaluation/view_one_avaliacao_user_page.dart';
+import 'package:housepass/pages/user/invite/invite_received_respond.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
-import 'package:housepass/pages/user/recomendacao/respond_recomendacao_user_page.dart';
+import 'package:housepass/pages/user/recommendation/respond_recomendacao_user_page.dart';
 
 class NotificationsPage extends StatelessWidget {
   List<ItemNotification> notifications = _loadNotifications();
