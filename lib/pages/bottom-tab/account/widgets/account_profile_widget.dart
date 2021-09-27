@@ -6,7 +6,7 @@ class AccountProfileWidget extends StatelessWidget {
 
   final bool isAccount;
 
-  const AccountProfileWidget(this.isAccount);
+  AccountProfileWidget(this.isAccount);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,7 @@ class AccountProfileWidget extends StatelessWidget {
                 ),
                 _loadButtonConfigurations(context, this.isAccount),
                 _loadButtonEdit(context, this.isAccount),
+                _loadButtonLogout(context, this.isAccount),
                 _loadButtonInviteConnection(context, this.isAccount),
 
                 SizedBox(height: 25)
@@ -85,7 +86,7 @@ class AccountProfileWidget extends StatelessWidget {
         ));
   }
 
-  _loadButtonConfigurations(BuildContext context, bool isAccount) {
+  _loadButtonEdit(BuildContext context, bool isAccount) {
     if ( isAccount ){
       return Positioned(
         child:
@@ -99,7 +100,7 @@ class AccountProfileWidget extends StatelessWidget {
             );
           },
         ),
-        right: 10,
+        right: 45,
         top: 110,
       );
     }
@@ -109,7 +110,7 @@ class AccountProfileWidget extends StatelessWidget {
 
   }
 
-  _loadButtonEdit(BuildContext context, bool isAccount) {
+  _loadButtonConfigurations(BuildContext context, bool isAccount) {
     if ( isAccount ){
       return  Positioned(
         child: IconButton(
@@ -122,13 +123,64 @@ class AccountProfileWidget extends StatelessWidget {
             );
           },
         ),
-        right: 50,
+        right: 90,
         top: 110,
       );
     }
     else {
       return Container();
     }
+  }
+
+  _loadButtonLogout(BuildContext context, bool isAccount) {
+    if ( isAccount ){
+      return  Positioned(
+        child: IconButton(
+          icon: Icon (Icons.exit_to_app),
+          color: Colors.redAccent,
+          onPressed: () {
+            showAlertDialog(context);
+          },
+        ),
+        right: 5,
+        top: 110,
+      );
+    }
+    else {
+      return Container();
+    }
+  }
+
+
+  showAlertDialog(BuildContext context)
+  {
+    // configura o button
+    Widget confirmButton = ElevatedButton(
+      child: Text("Confirmar"),
+      onPressed: () { },
+    );
+
+    Widget cancelButton = ElevatedButton(
+      child: Text("Cancelar"),
+      onPressed: () { },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Logout"),
+      content: Text("Você confirma que deseja sair do aplicativo?"),
+      actions: [
+        cancelButton,
+        confirmButton
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
   }
 
   _loadButtonInviteConnection(BuildContext context, bool isAccount) {
