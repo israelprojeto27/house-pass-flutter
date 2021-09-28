@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/event_user_model.dart';
 import 'package:housepass/pages/user/event/list_event_user_page.dart';
-import 'package:housepass/pages/user/recommendation/list_recommendations_user_page.dart';
 
 class AccountEventsWidget extends StatelessWidget {
   List<EventUserModel> events = _loadEventsUser();
