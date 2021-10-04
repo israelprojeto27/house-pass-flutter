@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/user/configurations/configuration_user_page.dart';
 import 'package:housepass/pages/user/edit/edit_account_user_page.dart';
+import 'package:housepass/pages/user/login/login_user_page.dart';
 
 class AccountProfileWidget extends StatelessWidget {
 
@@ -157,7 +158,11 @@ class AccountProfileWidget extends StatelessWidget {
     // configura o button
     Widget confirmButton = ElevatedButton(
       child: Text("Confirmar"),
-      onPressed: () { },
+      onPressed: () {
+
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+            LoginUserPage()), (Route<dynamic> route) => false);
+      },
     );
 
     Widget cancelButton = ElevatedButton(

@@ -1,6 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/bottom-tab/message_page.dart';
+import 'package:housepass/pages/user/login/login_user_page.dart';
 import 'package:housepass/routes/routes.dart';
 import 'package:housepass/widgets/bottom_navigation_bar_menu.dart';
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: BottomNavigationBarApp(),
+     // home: BottomNavigationBarApp(),
+      home:LoginUserPage(),
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
