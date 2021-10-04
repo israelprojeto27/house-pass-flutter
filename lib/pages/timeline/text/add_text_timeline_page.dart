@@ -10,9 +10,32 @@ class _AddTextTimelinePageState extends State<AddTextTimelinePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Publicar Foto')
+          title: Text('Escrever uma Publicação'),
+        actions: [
+          ElevatedButton(
+            child: Text('Publicar'),
+            onPressed: () {
+            },
+          ),
+        ],
       ),
-      body: Text('Tela para escrever uma publicação'),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              color: Colors.white70,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  maxLines: 8,
+                  decoration: InputDecoration.collapsed(hintText: "Digite aqui o seu texto"),
+                ),
+              ),
+            ),
+          )
+        ],
+      )
     );
   }
 }

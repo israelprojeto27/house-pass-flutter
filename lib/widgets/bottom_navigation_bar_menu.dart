@@ -20,8 +20,8 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
   final List<Widget> _pageOptions = <Widget>[
     TimelinePage(),
     SearchPage(),
-    NotificationsPage(),
     PublishPage(),
+    NotificationsPage(),
     AccountPage(),
   ];
 
@@ -48,8 +48,8 @@ class _BottomNavigationBarApp extends State<BottomNavigationBarApp> {
           items:  [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-              BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
               BottomNavigationBarItem(icon: Icon(Icons.add_box), label: 'Publicação'),
+              BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
               BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: 'Account'),
           ],
         currentIndex: _selectedIndex,
