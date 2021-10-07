@@ -3,6 +3,7 @@ import 'package:housepass/models/avliacao_user_model.dart';
 import 'package:housepass/pages/imovel/avaliacao/create_avaliacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/avaliacao/list_avaliacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/oferta/list_ofertas_page.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class CardAvaliacoesDetailImovelWidget extends StatefulWidget {
   @override
@@ -33,29 +34,37 @@ class _CardAvaliacoesDetailImovelWidgetState
             children: [
               Column(
                 children: avaliacoes
-                    .map((item) => Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                            leading: ClipOval(
-                              child: Image.asset(item.userImageUrl),
-                            ),
-                            title: Container(
-                              margin: EdgeInsets.only(top: 5),
-                              child: Text(item.userName),
-                            ),
-                            subtitle: Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.star),
-                                  Icon(Icons.star),
-                                  Icon(Icons.star),
-                                  Icon(Icons.star),
-                                  Icon(Icons.star),
-                                ],
+                    .map((item) => InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailUserPage()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                              leading: ClipOval(
+                                child: Image.asset(item.userImageUrl),
+                              ),
+                              title: Container(
+                                margin: EdgeInsets.only(top: 5),
+                                child: Text(item.userName),
+                              ),
+                              subtitle: Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.star),
+                                    Icon(Icons.star),
+                                    Icon(Icons.star),
+                                    Icon(Icons.star),
+                                    Icon(Icons.star),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
+                      ),
                     ))
                     .toList(),
               ),

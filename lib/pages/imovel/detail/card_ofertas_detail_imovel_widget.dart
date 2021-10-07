@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:housepass/models/oferta_model.dart';
 import 'package:housepass/pages/imovel/oferta/create_oferta_imovel_page.dart';
 import 'package:housepass/pages/imovel/oferta/list_ofertas_page.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class CardOfertasDetailImovelWidget extends StatefulWidget {
   @override
@@ -32,27 +33,35 @@ class _CardOfertasDetailImovelWidgetState
             children: [
               Column(
                 children: ofertas
-                    .map((item) => ListTile(
-                        leading: ClipOval(
-                          child: Image.asset(item.userImageUrl),
-                        ),
-                        title: Text(item.userName),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              item.valorOferta,
-                              style: TextStyle(
-                                  color: Colors.red, fontSize: 18, fontStyle: FontStyle.italic),
-                            ),
-                            Text(
-                              item.dataOferta,
-                              style: TextStyle(
-                                  color: Colors.red, fontStyle: FontStyle.italic),
-                            ),
-                          ],
-                        ),
-                        isThreeLine: true,))
+                    .map((item) => InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailUserPage()),
+                        );
+                      },
+                      child: ListTile(
+                          leading: ClipOval(
+                            child: Image.asset(item.userImageUrl),
+                          ),
+                          title: Text(item.userName),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                item.valorOferta,
+                                style: TextStyle(
+                                    color: Colors.red, fontSize: 18, fontStyle: FontStyle.italic),
+                              ),
+                              Text(
+                                item.dataOferta,
+                                style: TextStyle(
+                                    color: Colors.red, fontStyle: FontStyle.italic),
+                              ),
+                            ],
+                          ),
+                          isThreeLine: true,),
+                    ))
                     .toList(),
               ),
               SizedBox(

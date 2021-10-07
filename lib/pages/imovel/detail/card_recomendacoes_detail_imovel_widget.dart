@@ -3,6 +3,7 @@ import 'package:housepass/models/recomendacao_imovel_model.dart';
 import 'package:housepass/pages/imovel/oferta/list_ofertas_page.dart';
 import 'package:housepass/pages/imovel/recomendacao/create_recomendacao_imovel_page.dart';
 import 'package:housepass/pages/imovel/recomendacao/list_recomendacoes_imovel_page.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class CardRecomendacoesDetailImovelWidget extends StatefulWidget {
   @override
@@ -34,32 +35,40 @@ class _CardRecomendacoesDetailImovelWidgetState
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: recomendacoes
-                    .map((item) => ListTile(
-                          leading: ClipOval(
-                            child: Image.asset(item.userImageUrl),
+                    .map((item) => InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailUserPage()),
+                        );
+                      },
+                      child: ListTile(
+                            leading: ClipOval(
+                              child: Image.asset(item.userImageUrl),
+                            ),
+                            title: Text(item.userName),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  item.descricaoRecomendacao,
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 14,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                                Text(
+                                  item.dataRecomendacao,
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: 12,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                              ],
+                            ),
+                            isThreeLine: true,
                           ),
-                          title: Text(item.userName),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                item.descricaoRecomendacao,
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.italic),
-                              ),
-                              Text(
-                                item.dataRecomendacao,
-                                style: TextStyle(
-                                    color: Colors.red,
-                                    fontSize: 12,
-                                    fontStyle: FontStyle.italic),
-                              ),
-                            ],
-                          ),
-                          isThreeLine: true,
-                        ))
+                    ))
                     .toList(),
               ),
               SizedBox(

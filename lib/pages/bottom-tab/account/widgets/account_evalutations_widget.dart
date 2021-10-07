@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/avaliacao_user_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 import 'package:housepass/pages/user/evaluation/list_avaliacao_user_page.dart';
 import 'package:housepass/pages/user/recommendation/list_recommendations_user_page.dart';
 
@@ -28,51 +29,59 @@ class AccountEvaluationsWidget extends StatelessWidget {
               children: [
                 Column(
                   children: avaliacoes
-                      .map((item) => ListTile(
-                            leading: ClipOval(
-                              child: Image.asset(item.userImageUrl),
-                            ),
-                            title: Text(item.userName),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.star,
-                                          size: 18,
-                                        )),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.star, size: 18)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.star, size: 18)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon:
-                                            Icon(Icons.star_border, size: 18)),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon: Icon(Icons.star_border, size: 18))
-                                  ],
-                                ),
-                                Text(
-                                  item.dataAvaliacao,
-                                  style: TextStyle(color: Colors.red),
-                                ),
+                      .map((item) => InkWell(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DetailUserPage()),
+                          );
+                        },
+                        child: ListTile(
+                              leading: ClipOval(
+                                child: Image.asset(item.userImageUrl),
+                              ),
+                              title: Text(item.userName),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.star,
+                                            size: 18,
+                                          )),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.star, size: 18)),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.star, size: 18)),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon:
+                                              Icon(Icons.star_border, size: 18)),
+                                      IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.star_border, size: 18))
+                                    ],
+                                  ),
+                                  Text(
+                                    item.dataAvaliacao,
+                                    style: TextStyle(color: Colors.red),
+                                  ),
 
-                                SizedBox(
-                                  height: 24,
-                                )
-                              ],
+                                  SizedBox(
+                                    height: 24,
+                                  )
+                                ],
+                              ),
                             ),
-                          ))
+                      ))
                       .toList(),
                 ),
                 SizedBox(

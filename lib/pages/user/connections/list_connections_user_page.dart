@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/connections_user_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class ListConnectionsUserPage extends StatefulWidget {
   @override
@@ -21,27 +22,35 @@ class _ListConnectionsUserPageState extends State<ListConnectionsUserPage> {
           child: Center(
             child: Column(
               children: connections
-                  .map((item) => ListTile(
+                  .map((item) => InkWell(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailUserPage()),
+                      );
+                    },
+                    child: ListTile(
                 leading: ClipOval(
-                  child: Image.asset(item.userImageUrl),
+                    child: Image.asset(item.userImageUrl),
                 ),
                 title: Text(item.userName),
                 subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.userProfile,
-                      style: TextStyle(
-                          color: Colors.red, fontSize: 16),
-                    ),
-                    Text(
-                      item.userLocation,
-                      style: TextStyle(
-                          color: Colors.red),
-                    ),
-                  ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.userProfile,
+                        style: TextStyle(
+                            color: Colors.red, fontSize: 16),
+                      ),
+                      Text(
+                        item.userLocation,
+                        style: TextStyle(
+                            color: Colors.red),
+                      ),
+                    ],
                 ),
-                isThreeLine: true,))
+                isThreeLine: true,),
+                  ))
                   .toList(),
             ),
           ),

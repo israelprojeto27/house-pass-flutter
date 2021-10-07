@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/recomendacao_user_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 import 'package:housepass/pages/user/recommendation/list_recommendations_user_page.dart';
 
 
@@ -29,24 +30,32 @@ class AccountRecommendationsWidget extends StatelessWidget {
               children: [
                 Column(
                   children: recomendacoes
-                      .map((item) => ListTile(
+                      .map((item) => InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DetailUserPage()),
+                        );
+                      },
+                        child: ListTile(
                     leading: ClipOval(
-                      child: Image.asset(item.userImageUrl),
+                        child: Image.asset(item.userImageUrl),
                     ),
                     title: Text(item.userName),
                     subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      SizedBox(height: 4,),
-                        Text(
-                          item.descricaoRecomendacao,
-                          style: TextStyle(
-                              color: Colors.red),
-                        ),
-                        SizedBox(height: 16,)
-                      ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        SizedBox(height: 4,),
+                          Text(
+                            item.descricaoRecomendacao,
+                            style: TextStyle(
+                                color: Colors.red),
+                          ),
+                          SizedBox(height: 16,)
+                        ],
                     ),
-                    isThreeLine: true,))
+                    isThreeLine: true,),
+                      ))
                       .toList(),
                 ),
                 SizedBox(height: 8,),

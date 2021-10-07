@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/recomendacao_imovel_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 import 'package:housepass/widgets/widget_detail_imovel_in_lists.dart';
 
 class ListRecomendacoesImovelPage extends StatefulWidget {
@@ -25,69 +26,77 @@ class _ListRecomendacoesImovelPageState
             Container(
               margin: EdgeInsets.only(left: 16, top: 30, right: 16),
               height: 250,
-              child: ListView.builder(
-                  itemCount: recomendacoes.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    RecomendacaoImovel recomendacao = recomendacoes[index];
-                    return Container(
-                        child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: (ClipRRect(
-                                  child: Image.asset(recomendacao.userImageUrl),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(40)),
-                                ))),
-                            Expanded(
-                              child: Container(
-                                margin: EdgeInsets.only(left: 10, right: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(recomendacao.userName,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18)),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(recomendacao.descricaoRecomendacao,
-                                            style: TextStyle(fontSize: 16)),
-                                        Text(
-                                          recomendacao.dataRecomendacao,
-                                        )
-                                      ],
-                                    ),
-                                  ],
+              child: InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DetailUserPage()),
+                  );
+                },
+                child: ListView.builder(
+                    itemCount: recomendacoes.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      RecomendacaoImovel recomendacao = recomendacoes[index];
+                      return Container(
+                          child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: (ClipRRect(
+                                    child: Image.asset(recomendacao.userImageUrl),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(40)),
+                                  ))),
+                              Expanded(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 10, right: 10),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(recomendacao.userName,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18)),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(recomendacao.descricaoRecomendacao,
+                                              style: TextStyle(fontSize: 16)),
+                                          Text(
+                                            recomendacao.dataRecomendacao,
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(children: [
-                          Expanded(
-                            child: new Container(
-                                child: Divider(
-                              color: Colors.black,
-                              height: 25,
-                            )),
+                            ],
                           ),
-                        ]),
-                        SizedBox(
-                          height: 20,
-                        )
-                      ],
-                    ));
-                  }),
+                          Row(children: [
+                            Expanded(
+                              child: new Container(
+                                  child: Divider(
+                                color: Colors.black,
+                                height: 25,
+                              )),
+                            ),
+                          ]),
+                          SizedBox(
+                            height: 20,
+                          )
+                        ],
+                      ));
+                    }),
+              ),
             )
           ],
         ),

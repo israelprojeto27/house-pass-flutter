@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/event_user_model.dart';
+import 'package:housepass/pages/user/event/detail_event_user_page.dart';
 import 'package:housepass/pages/user/event/list_event_user_page.dart';
 
 class AccountEventsWidget extends StatelessWidget {
@@ -27,36 +28,44 @@ class AccountEventsWidget extends StatelessWidget {
                   children: [
                     Column(
                       children: events
-                          .map((item) => ListTile(
-                                leading: ClipRRect(
-                                  child: Image.asset(item.imageUrl),
+                          .map((item) => InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => DetailEventUserPage()),
+                              );
+                            },
+                            child: ListTile(
+                                  leading: ClipRRect(
+                                    child: Image.asset(item.imageUrl),
+                                  ),
+                                  title: Text(item.name),
+                                  subtitle: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        item.description,
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                      SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        item.dataEvent,
+                                        style: TextStyle(
+                                            color: Colors.red, fontSize: 12),
+                                      ),
+                                      SizedBox(
+                                        height: 16,
+                                      )
+                                    ],
+                                  ),
+                                  isThreeLine: true,
                                 ),
-                                title: Text(item.name),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 4,
-                                    ),
-                                    Text(
-                                      item.description,
-                                      style: TextStyle(color: Colors.red),
-                                    ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text(
-                                      item.dataEvent,
-                                      style: TextStyle(
-                                          color: Colors.red, fontSize: 12),
-                                    ),
-                                    SizedBox(
-                                      height: 16,
-                                    )
-                                  ],
-                                ),
-                                isThreeLine: true,
-                              ))
+                          ))
                           .toList(),
                     ),
                     SizedBox(height: 8,),

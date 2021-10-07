@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/oferta_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 import 'package:housepass/widgets/widget_detail_imovel_in_lists.dart';
 
 class ListaOfertasPage extends StatelessWidget {
@@ -17,45 +18,53 @@ class ListaOfertasPage extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(left: 16, top: 30, right: 16),
                 height: 250,
-                child: ListView.builder(
-                    itemCount: ofertas.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      ItemOferta itemOferta = ofertas[index];
-                      return Container(
-                          child: Column(
-                        children: [
-                          ListTile(
-                            leading: ClipOval(
-                              child: Image.asset(itemOferta.userImageUrl),
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailUserPage()),
+                    );
+                  },
+                  child: ListView.builder(
+                      itemCount: ofertas.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        ItemOferta itemOferta = ofertas[index];
+                        return Container(
+                            child: Column(
+                          children: [
+                            ListTile(
+                              leading: ClipOval(
+                                child: Image.asset(itemOferta.userImageUrl),
+                              ),
+                              title: Text(itemOferta.userName),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(itemOferta.valorOferta,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.red,
+                                          fontWeight: FontWeight.w500
+                                      )),
+                                  Text(itemOferta.dataOferta,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.red,
+                                      )),
+                                ],
+                              ),
                             ),
-                            title: Text(itemOferta.userName),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(itemOferta.valorOferta,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.red,
-                                        fontWeight: FontWeight.w500
-                                    )),
-                                Text(itemOferta.dataOferta,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.red,
-                                    )),
-                              ],
+                            Divider(
+                              color: Colors.black,
+                              height: 25,
                             ),
-                          ),
-                          Divider(
-                            color: Colors.black,
-                            height: 25,
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                        ],
-                      ));
-                    })),
+                            SizedBox(
+                              height: 8,
+                            ),
+                          ],
+                        ));
+                      }),
+                )),
           ],
         ));
   }

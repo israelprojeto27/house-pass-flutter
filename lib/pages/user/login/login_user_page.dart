@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/user/create/create_user_page.dart';
-import 'package:housepass/pages/user/create/tipo_user_widget.dart';
+import 'package:housepass/pages/user/forgotpassword/forgot_password_user_page.dart';
 import 'package:housepass/widgets/bottom_navigation_bar_menu.dart';
 
 class LoginUserPage extends StatefulWidget {
@@ -61,7 +61,12 @@ class _LoginUserPageState extends State<LoginUserPage> {
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.w500),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ForgotPasswordUserPage()));
+                        },
                       ),
                       SizedBox(width: 12),
                       InkWell(

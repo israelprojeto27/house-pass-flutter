@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 import 'package:housepass/widgets/widget_detail_imovel_in_lists.dart';
 import 'package:housepass/widgets/widget_detail_user_in_requests.dart';
 
@@ -29,15 +30,26 @@ class ViewOneAvaliacaoImovelPage extends StatelessWidget {
                 IconButton(onPressed: () {}, icon: Icon(Icons.star_border))
               ],
             ),
-            DetailUserWidget(),
-            SizedBox(height: 20,),
+            InkWell(
+              child: DetailUserWidget(),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailUserPage()),
+                );
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Center(
               child: ElevatedButton(
                 child: Text('Ver mais'),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ListaAvaliacaoImovelPage()),
+                    MaterialPageRoute(
+                        builder: (context) => ListaAvaliacaoImovelPage()),
                   );
                 },
               ),
