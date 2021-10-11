@@ -16,6 +16,7 @@ class ListItemsMessagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
           title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -44,10 +45,13 @@ class ListItemsMessagesPage extends StatelessWidget {
                         margin: EdgeInsets.only(top: 20),
                         child: itemMessage.userId == userCurrentId
                             ? ItemMessageLeftWidget(itemMessage)
-                            : ItemMessageRightWidget(itemMessage)
-                    );
+                            : ItemMessageRightWidget(itemMessage));
                   })),
-          TextComposer()
+          Card(
+            child: TextComposer(),
+            elevation: 8,
+            margin: EdgeInsets.all(8),
+          )
         ],
       ),
     );
@@ -56,19 +60,24 @@ class ListItemsMessagesPage extends StatelessWidget {
   static List<ItemMessage> _loadItemMessages() {
     List<ItemMessage> list = [];
 
-    ItemMessage item = ItemMessage('Cheguei agora', '1', 'Roana', 'assets/images/user/img_roana.jpg');
+    ItemMessage item = ItemMessage(
+        'Cheguei agora', '1', 'Roana', 'assets/images/user/img_roana.jpg');
     list.add(item);
 
-    item = ItemMessage('tudo bem', '2', 'Lannes', 'assets/images/user/img_lannes.jpg');
+    item = ItemMessage(
+        'tudo bem', '2', 'Lannes', 'assets/images/user/img_lannes.jpg');
     list.add(item);
 
-    item = ItemMessage('comprei todas as mercadorias', '1', 'Roana', 'assets/images/user/img_roana.jpg');
+    item = ItemMessage('comprei todas as mercadorias', '1', 'Roana',
+        'assets/images/user/img_roana.jpg');
     list.add(item);
 
-    item = ItemMessage('paguei com pix', '1', 'Roana', 'assets/images/user/img_roana.jpg');
+    item = ItemMessage(
+        'paguei com pix', '1', 'Roana', 'assets/images/user/img_roana.jpg');
     list.add(item);
 
-    item = ItemMessage('ok fechado', '2', 'Lannes', 'assets/images/user/img_lannes.jpg');
+    item = ItemMessage(
+        'ok fechado', '2', 'Lannes', 'assets/images/user/img_lannes.jpg');
     list.add(item);
 
     return list;

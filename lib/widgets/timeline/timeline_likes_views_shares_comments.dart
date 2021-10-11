@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
-class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatelessWidget {
+class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatefulWidget {
+  @override
+  _TimelinePostQuantLikesViewsSharesCommentsWidgetState createState() => _TimelinePostQuantLikesViewsSharesCommentsWidgetState();
+}
+
+class _TimelinePostQuantLikesViewsSharesCommentsWidgetState extends State<TimelinePostQuantLikesViewsSharesCommentsWidget> {
+
+  Color colorLike = Colors.grey;
+  bool isLikeClicked = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -74,15 +83,29 @@ class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    if (isLikeClicked){
+                      isLikeClicked = false;
+                      this.colorLike = Colors.grey;
+                    }
+                    else {
+                      isLikeClicked = true;
+                      this.colorLike = Colors.black;
+                    }
+                  });
+                },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Icon(
-                      Icons.thumb_up_alt,
-                      color: Colors.grey,
-                      size: 16,
+                    InkWell(
+                      child: Icon(
+                        Icons.thumb_up_alt,
+                        color: colorLike,
+                        size: 16,
+                      ),
+
                     ),
                     SizedBox(
                       width: 4,

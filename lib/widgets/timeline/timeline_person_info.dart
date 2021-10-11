@@ -4,12 +4,13 @@ import 'package:housepass/pages/imovel/edit/edit_imovel_page.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class TimelineInfoPersonPostWidget extends StatefulWidget {
-
   @override
-  _TimelineInfoPersonPostWidgetState createState() => _TimelineInfoPersonPostWidgetState();
+  _TimelineInfoPersonPostWidgetState createState() =>
+      _TimelineInfoPersonPostWidgetState();
 }
 
-class _TimelineInfoPersonPostWidgetState extends State<TimelineInfoPersonPostWidget> {
+class _TimelineInfoPersonPostWidgetState
+    extends State<TimelineInfoPersonPostWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +18,28 @@ class _TimelineInfoPersonPostWidgetState extends State<TimelineInfoPersonPostWid
         leading: Container(
             width: 50,
             height: 40,
-            child: Image.asset('assets/images/user/img_eu_jitjitsu.jpg')
+            child: InkWell(
+              child: Image.asset('assets/images/user/img_eu_jitjitsu.jpg'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailUserPage()),
+                );
+              },
+            )),
+        title: InkWell(
+          child: Text("Israel Barreto"),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DetailUserPage()),
+            );
+          },
         ),
-        title: Text("Israel Barreto"),
-        subtitle: Text("Corretor", style: TextStyle(color: Colors.red),),
+        subtitle: Text(
+          "Corretor",
+          style: TextStyle(color: Colors.red),
+        ),
         trailing: PopupMenuButton<String>(
           icon: Icon(Icons.more_vert),
           onSelected: choiceAction,
@@ -33,26 +52,18 @@ class _TimelineInfoPersonPostWidgetState extends State<TimelineInfoPersonPostWid
             }).toList();
           },
         ),
-
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => DetailUserPage()),
-          );
-        },
       ),
     );
   }
 
   void choiceAction(String value) {
     print('Opcao selecionada: ' + value);
-    if ( value == 'Detalhes Imóvel'){
+    if (value == 'Detalhes Imóvel') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => DetailImovelPage()),
       );
-    }
-    else if ( value == 'Editar Imóvel'){
+    } else if (value == 'Editar Imóvel') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => EditImovelPage()),
@@ -63,7 +74,8 @@ class _TimelineInfoPersonPostWidgetState extends State<TimelineInfoPersonPostWid
 
 class Constants {
   static const String DetalhesImovel = 'Detalhes Imóvel';
-  static const String EditarImovel = 'Editar Imóvel'; // realizar um tratamento nesta opção para que seja exibido apenas para o dono do imovel
+  static const String EditarImovel =
+      'Editar Imóvel'; // realizar um tratamento nesta opção para que seja exibido apenas para o dono do imovel
   static const String ThirdItem = 'Third Item';
 
   static const List<String> choices = <String>[
@@ -72,4 +84,3 @@ class Constants {
     ThirdItem,
   ];
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class DetailTimelineLikesWidget extends StatefulWidget {
   @override
@@ -37,8 +38,16 @@ class _DetailTimelineLikesWidgetState extends State<DetailTimelineLikesWidget> {
                   height: 50,
                   margin: EdgeInsets.only(right: 6),
                   padding: EdgeInsets.only(top: 10, bottom: 10, left: 5),
-                  child: ClipOval(
-                    child: Image.asset(urlImage),
+                  child: InkWell(
+                    child: ClipOval(
+                      child: Image.asset(urlImage),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailUserPage()),
+                      );
+                    },
                   ),
                 );
               },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/comentario_model.dart';
+import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class DetailTimelineComentarioWidget extends StatefulWidget {
   @override
@@ -34,13 +35,21 @@ class _DetailTimelineComentarioWidgetState extends State<DetailTimelineComentari
                       children: [
                         Row(
                           children: [
-                            Container(
-                                height: 50,
-                                width: 50,
-                                child: (ClipRRect(
-                                  child: Image.asset(itemComentario.userImageUrl),
-                                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                                ))),
+                            InkWell(
+                              child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: (ClipRRect(
+                                    child: Image.asset(itemComentario.userImageUrl),
+                                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                                  ))),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DetailUserPage()),
+                                );
+                              },
+                            ),
                             Expanded(
                               child: Container(
                                 margin: EdgeInsets.only(left: 10, right:10),
