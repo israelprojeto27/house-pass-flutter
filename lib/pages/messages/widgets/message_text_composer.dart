@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextComposer extends StatefulWidget {
+
+  final String label;
+  TextComposer(this.label);
+
   @override
   _TextComposerState createState() => _TextComposerState();
 }
@@ -19,7 +23,7 @@ class _TextComposerState extends State<TextComposer> {
           SizedBox(width:8),
           Expanded(
             child: TextField(
-              decoration: InputDecoration.collapsed(hintText: 'Digite uma mensagem'),
+              decoration: InputDecoration.collapsed(hintText: widget.label),
               onChanged: (text){
                 setState(() {
                   _isComposing = text.isNotEmpty;

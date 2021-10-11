@@ -48,7 +48,7 @@ class ListItemsMessagesPage extends StatelessWidget {
                             : ItemMessageRightWidget(itemMessage));
                   })),
           Card(
-            child: TextComposer(),
+            child: TextComposer('Digite uma mensagem aqui'),
             elevation: 8,
             margin: EdgeInsets.all(8),
           )

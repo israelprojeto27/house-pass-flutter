@@ -81,7 +81,7 @@ class _ListaComentariosPageState extends State<ListaComentariosPage> {
                   );
                 }),
           ),
-          TextComposer(),
+          TextComposer('Digite uma mensagem aqui'),
         ],
       ),
     );

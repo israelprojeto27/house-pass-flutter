@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/widgets/timeline/timeline_post_comments_page.dart';
+import 'package:housepass/widgets/timeline/timeline_post_share_page.dart';
 
 class TimelinePostQuantLikesViewsSharesCommentsWidget extends StatefulWidget {
   @override
@@ -118,43 +120,59 @@ class _TimelinePostQuantLikesViewsSharesCommentsWidgetState extends State<Timeli
                   ],
                 ),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Icon(
-                    Icons.forum,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Comment",
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+              GestureDetector(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      Icons.forum,
+                      color: Colors.grey,
+                      size: 16,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Comment",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TimelinePostCommentsPage('image')),
+                  );
+                },
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Icon(
-                    Icons.share,
-                    color: Colors.grey,
-                    size: 16,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Share",
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+              GestureDetector(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Icon(
+                      Icons.share,
+                      color: Colors.grey,
+                      size: 16,
+                    ),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(
+                      "Share",
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(color: Colors.grey),
+                    )
+                  ],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TimelinePostSharePage('image')),
+                  );
+                },
               )
             ],
           )
