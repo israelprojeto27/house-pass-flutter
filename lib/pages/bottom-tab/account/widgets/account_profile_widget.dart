@@ -3,11 +3,19 @@ import 'package:housepass/pages/user/configurations/configuration_user_page.dart
 import 'package:housepass/pages/user/edit/edit_account_user_page.dart';
 import 'package:housepass/pages/user/login/login_user_page.dart';
 
-class AccountProfileWidget extends StatelessWidget {
+
+class AccountProfileWidget extends StatefulWidget {
 
   final bool isAccount;
-
   AccountProfileWidget(this.isAccount);
+
+  @override
+  _AccountProfileWidgetState createState() => _AccountProfileWidgetState();
+}
+
+class _AccountProfileWidgetState extends State<AccountProfileWidget> {
+
+  String typeConnection = 'isConnected';
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +50,10 @@ class AccountProfileWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                _loadButtonConfigurations(context, this.isAccount),
-                _loadButtonEdit(context, this.isAccount),
-                _loadButtonLogout(context, this.isAccount),
-                _loadButtonInviteConnection(context, this.isAccount),
+                _loadButtonConfigurations(context, widget.isAccount),
+                _loadButtonEdit(context, widget.isAccount),
+                _loadButtonLogout(context, widget.isAccount),
+                _loadButtonInviteConnection(context, widget.isAccount),
 
                 SizedBox(height: 25)
               ],
@@ -189,14 +197,46 @@ class AccountProfileWidget extends StatelessWidget {
   }
 
   _loadButtonInviteConnection(BuildContext context, bool isAccount) {
+
+    String labelInvite = '';
+
+    if ( typeConnection == 'isConnected' ){
+      setState(() {
+          labelInvite = 'Cancelar Conexão';
+      });
+    }
+    else if ( typeConnection == 'inviteSent' ){
+      setState(() {
+        labelInvite = 'Cancelar Convite';
+      });
+    }
+    else {
+      setState(() {
+        labelInvite = 'Enviar Convite';
+      });
+    }
+
+    print('label: ' + labelInvite );
+
     if (!isAccount){
       return Positioned(
         child: ElevatedButton(
-          child: Text('Enviar Convite'),
+          child: Text(labelInvite),
           onPressed: () {
+            if ( typeConnection == 'isConnected' ){
+              showAlertCancelConnection(context);
+            }
+            else if ( typeConnection == 'inviteSent' ){
+              showAlertCancelInviteSent(context);
+            }
+            else {
+              setState(() {
+                typeConnection = 'inviteSent';
+              });
+            }
           },
         ),
-        right: 50,
+        right: 15,
         top: 110,
       );
     }
@@ -204,4 +244,85 @@ class AccountProfileWidget extends StatelessWidget {
       return Container();
     }
   }
+
+  showAlertCancelConnection(BuildContext context)
+  {
+    // configura o button
+    Widget confirmButton = ElevatedButton(
+      child: Text("Confirmar"),
+      onPressed: () {
+        setState(() {
+          typeConnection = '';
+        });
+        Navigator.pop(context, true);
+      },
+    );
+
+    Widget cancelButton = ElevatedButton(
+      child: Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context, true);
+      },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Cancelar conexão"),
+      content: Text("Você deseja realmente cancelar conexão com este usuário?"),
+      actions: [
+        cancelButton,
+        confirmButton
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+
+
+  showAlertCancelInviteSent(BuildContext context)
+  {
+    // configura o button
+    Widget confirmButton = ElevatedButton(
+      child: Text("Confirmar"),
+      onPressed: () {
+
+        setState(() {
+          typeConnection = '';
+        });
+        Navigator.pop(context, true);
+      },
+    );
+
+    Widget cancelButton = ElevatedButton(
+      child: Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context, true);
+      },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Cancelar convite"),
+      content: Text("Você deseja realmente cancelar o convite enviado para este usuário?"),
+      actions: [
+        cancelButton,
+        confirmButton
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
+
 }
+
+

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../result_search_imoveis_page.dart';
+
 class ButtonSearchPageWidget extends StatefulWidget {
 
   final RangeValues priceValue;
@@ -90,6 +92,7 @@ class _ButtonSearchPageWidgetState extends State<ButtonSearchPageWidget> {
                   ),
                   onTap: () {
                     FocusScope.of(context).requestFocus(FocusNode());
+
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -107,6 +110,11 @@ class _ButtonSearchPageWidgetState extends State<ButtonSearchPageWidget> {
 
                           print("Area maximo: " + widget.areaValue.end.toString());
                           print("Area minimo: " + widget.areaValue.start.toString());
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ResultSearchImoveisPage()),
+                          );
                         },
                         icon: Icon(
                           Icons.search,
