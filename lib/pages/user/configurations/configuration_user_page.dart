@@ -130,11 +130,20 @@ class _ConfigurationUserPageState extends State<ConfigurationUserPage> {
                         40), // double.infinity is the width and 30 is the height
                   ),
                   onPressed: () {
-                    print("Retorno exibe contas: " +
-                        isSwitchedExibeContaBuscas.toString());
-
-                    print("Retorno quem pode enviar convite: " +
-                        optionQuemPodeEnviarOfertas.toString());
+                    print('Configuracoes sendo salvas');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                          'Informações salvas com sucesso',
+                        ),
+                        action: SnackBarAction(
+                          label: 'Fechar',
+                          onPressed: () {
+                            // Code to execute.
+                          },
+                        ),
+                      ),
+                    );
                   },
                   child: Text('Salvar'),
                 ),

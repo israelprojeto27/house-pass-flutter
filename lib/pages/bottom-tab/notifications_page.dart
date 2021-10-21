@@ -13,6 +13,7 @@ import 'package:housepass/pages/user/recommendation/respond_recomendacao_user_pa
 class NotificationsPage extends StatelessWidget {
   List<ItemNotification> notifications = _loadNotifications();
 
+  double size = 120;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,39 +26,54 @@ class NotificationsPage extends StatelessWidget {
                   _loadDetailNotification(context, item);
                 },
                 child: Container(
-                    height: 100,
+                    height: 95,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                           spreadRadius: 2, blurRadius: 0, color: Colors.black12)
                     ]),
                     margin: EdgeInsets.all(7),
-                    child: Row(
-                      children: [
-                        Container(
-                            height: 70,
-                            width: 70,
-                            child: (ClipRRect(
+                    child: ListTile(
+                        leading: CircleAvatar(radius: (32),
+                            backgroundColor: Colors.white,
+                            child: ClipRRect(
+                              borderRadius:BorderRadius.circular(100),
                               child: Image.asset(item.imageUser),
-                              borderRadius: BorderRadius.all(Radius.circular(40)),
-                            ))),
-                        Container(
-                          margin: EdgeInsets.only(top: 5),
-                          padding: EdgeInsets.only( left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(item.label, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-                              SizedBox(height: 8,),
-                              Text(item.description, style: TextStyle(fontSize: 16), maxLines: 3,),
-                              Text(item.dateTime)
-                            ],
-                          ),
+                            )
                         ),
-
-                      ],
-                    )),
+                      title:  Text(item.label, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(item.description, style: TextStyle(fontSize: 16), maxLines: 3,),
+                          SizedBox(height:4 ),
+                          Text(item.dateTime)
+                        ],
+                      ),
+                      trailing: PopupMenuButton<String>(
+                        icon: Icon(Icons.more_vert, color: Colors.black,),
+                        onSelected: choiceAction,
+                        itemBuilder: (BuildContext context) {
+                          return Constants.choices.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                      ),
+                    ),
+                ),
               );
             }));
+
+
+  }
+
+  void choiceAction(String value) {
+    print('Opcao selecionada: ' + value);
+    if (value == 'Excluir Notificação') {
+
+    }
   }
 
   static List<ItemNotification> _loadNotifications() {
@@ -177,4 +193,12 @@ class ItemNotification {
   String dateTime;
 
   ItemNotification(this.imageUser, this.type, this.label, this.description, this.dateTime);
+}
+
+class Constants {
+  static const String ExcluirNotificacao = 'Excluir Notificação';
+
+  static const List<String> choices = <String>[
+    ExcluirNotificacao
+  ];
 }

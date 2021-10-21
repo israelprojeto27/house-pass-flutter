@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/conquer_user_model.dart';
+import 'package:housepass/pages/user/conquers/detail_conquer_user_page.dart';
 import 'package:housepass/pages/user/conquers/list_conquers_user_page.dart';
 
 
@@ -26,21 +27,29 @@ class AccountConquersWidget extends StatelessWidget {
             margin: EdgeInsets.only(top: 20),
             child: Column(
               children: [
-                Column(
-                  children: conquers
-                      .map((item) => Padding(
-                            padding: const EdgeInsets.only(top: 16),
-                            child: ListTile(
-                              leading: ClipRRect(
-                                child: Image.asset(item.imageUrl),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DetailConquerUserPage()),
+                    );
+                  },
+                  child: Column(
+                    children: conquers
+                        .map((item) => Padding(
+                              padding: const EdgeInsets.only(top: 16),
+                              child: ListTile(
+                                leading: ClipRRect(
+                                  child: Image.asset(item.imageUrl),
+                                ),
+                                title: Text(
+                                  item.description,
+                                ),
+                                subtitle: Text(item.dataConquer),
                               ),
-                              title: Text(
-                                item.description,
-                              ),
-                              subtitle: Text(item.dataConquer),
-                            ),
-                          ))
-                      .toList(),
+                            ))
+                        .toList(),
+                  ),
                 ),
                 SizedBox(
                   height: 8,

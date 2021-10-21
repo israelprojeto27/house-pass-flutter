@@ -175,7 +175,9 @@ class _AccountProfileWidgetState extends State<AccountProfileWidget> {
 
     Widget cancelButton = ElevatedButton(
       child: Text("Cancelar"),
-      onPressed: () { },
+      onPressed: () {
+        Navigator.pop(context, true);
+      },
     );
 
     // configura o  AlertDialog

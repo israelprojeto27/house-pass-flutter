@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/conquer_user_model.dart';
 
+import 'detail_conquer_user_page.dart';
+
 class ListConquersUserPage extends StatefulWidget {
   @override
   _ListConquersUserPageState createState() => _ListConquersUserPageState();
@@ -19,19 +21,27 @@ class _ListConquersUserPageState extends State<ListConquersUserPage> {
       body: Container(
         margin: EdgeInsets.only(top: 16),
         child: Center(
-          child: Column(
-            children: conquers
-                .map((item) => Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
-                  child: ListTile(
-              leading: ClipRRect(
-                  child: Image.asset(item.imageUrl),
-              ),
-              title: Text(item.description),
-              subtitle: Text(item.dataConquer),
-              ),
-                ))
-                .toList(),
+          child: InkWell(
+            onTap: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailConquerUserPage()),
+              );
+            },
+            child: Column(
+              children: conquers
+                  .map((item) => Padding(
+                    padding: const EdgeInsets.only(top: 16.0),
+                    child: ListTile(
+                leading: ClipRRect(
+                    child: Image.asset(item.imageUrl),
+                ),
+                title: Text(item.description),
+                subtitle: Text(item.dataConquer),
+                ),
+                  ))
+                  .toList(),
+            ),
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/event_user_model.dart';
 
+import 'detail_event_user_page.dart';
+
 class ListEventsUserPage extends StatefulWidget {
   @override
   _ListEventsUserPageState createState() => _ListEventsUserPageState();
@@ -14,41 +16,49 @@ class _ListEventsUserPageState extends State<ListEventsUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Recomendações Usuário'),
+        title: Text('Lista Eventos'),
       ),
       body: Container(
         margin: EdgeInsets.only(top: 16),
         child: Center(
           child: Column(
             children: [
-              Column(
-                children: events
-                    .map((item) => ListTile(
-                  leading: ClipRRect(
-                    child: Image.asset(item.imageUrl),
-                  ),
-                  title: Text(item.name),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item.description,
-                        style: TextStyle(
-                            color: Colors.red),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        item.dataEvent,
-                        style: TextStyle(
-                            color: Colors.red, fontSize: 12),
-                      ),
-                      SizedBox(height: 16,)
-                    ],
-                  ),
-                  isThreeLine: true,))
-                    .toList(),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DetailEventUserPage()),
+                  );
+                },
+                child: Column(
+                  children: events
+                      .map((item) => ListTile(
+                    leading: ClipRRect(
+                      child: Image.asset(item.imageUrl),
+                    ),
+                    title: Text(item.name),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item.description,
+                          style: TextStyle(
+                              color: Colors.red),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          item.dataEvent,
+                          style: TextStyle(
+                              color: Colors.red, fontSize: 12),
+                        ),
+                        SizedBox(height: 16,)
+                      ],
+                    ),
+                    isThreeLine: true,))
+                      .toList(),
+                ),
               ),
               SizedBox(height: 16,)
             ],

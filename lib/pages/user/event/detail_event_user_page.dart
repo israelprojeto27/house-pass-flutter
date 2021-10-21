@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/user/event/edit_event_user_page.dart';
+
+
 
 class DetailEventUserPage extends StatefulWidget {
   @override
@@ -22,6 +25,28 @@ class _DetailEventUserPageState extends State<DetailEventUserPage> {
             ),
             SizedBox(
               height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon (Icons.edit),
+                  color: Colors.redAccent,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EditEventUserPage()),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon (Icons.delete),
+                  color: Colors.redAccent,
+                  onPressed: () {
+                    showAlertDialogDelete(context);
+                  },
+                ),
+              ],
             ),
             Text(
               'Grande Feirão Caixa',
@@ -59,5 +84,42 @@ class _DetailEventUserPageState extends State<DetailEventUserPage> {
           ],
         )));
   }
+
+
+  showAlertDialogDelete(BuildContext context) {
+    // configura o button
+    Widget confirmButton = ElevatedButton(
+      child: Text("Confirmar"),
+      onPressed: () {
+        Navigator.pop(context, true);
+      },
+    );
+
+    Widget cancelButton = ElevatedButton(
+      child: Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context, true);
+      },
+    );
+
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Confirmar exclusão"),
+      content: Text("Você deseja realmente deletar esse evento?"),
+      actions: [
+        cancelButton,
+        confirmButton
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
+    );
+  }
 }
+
+
 

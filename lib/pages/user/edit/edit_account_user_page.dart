@@ -9,7 +9,6 @@ class EditAccountUserPage extends StatefulWidget {
 }
 
 class _EditAccountUserPageState extends State<EditAccountUserPage> {
-
   final nomeController = TextEditingController();
   final emailController = TextEditingController();
   final localizacaoController = TextEditingController();
@@ -17,7 +16,7 @@ class _EditAccountUserPageState extends State<EditAccountUserPage> {
   final webSiteController = TextEditingController();
   final sobreController = TextEditingController();
 
-  void initState(){
+  void initState() {
     super.initState();
     nomeController.text = 'Claudia Ximenes';
     emailController.text = 'claudia.ximenes@gmail.com';
@@ -26,7 +25,6 @@ class _EditAccountUserPageState extends State<EditAccountUserPage> {
     webSiteController.text = '';
     sobreController.text = 'Anos de experiencia no mercado imobiliario';
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,30 +38,47 @@ class _EditAccountUserPageState extends State<EditAccountUserPage> {
           child: Column(
             children: [
               InputPhotoUserEditWidget(),
-              Center (
-                child:IconButton(icon: Icon(Icons.camera_alt), onPressed: (){},),
+              Center(
+                child: IconButton(
+                  icon: Icon(Icons.camera_alt),
+                  onPressed: () {},
+                ),
               ),
-              InputFieldEditWidget('Nome', Icons.account_box, nomeController,1 ),
+              InputFieldEditWidget(
+                  'Nome', Icons.account_box, nomeController, 1),
               InputFieldEditWidget('Email', Icons.mail, emailController, 1),
-              InputFieldEditWidget('Localização', Icons.map_sharp, localizacaoController, 1),
-              InputFieldEditWidget('Telefone', Icons.phone, telefoneController, 1),
-              InputFieldEditWidget('WebSite', Icons.web_asset, webSiteController, 1),
-              InputFieldEditWidget('Sobre', Icons.description, sobreController, 3),
-              SizedBox(height: 30,),
+              InputFieldEditWidget(
+                  'Localização', Icons.map_sharp, localizacaoController, 1),
+              InputFieldEditWidget(
+                  'Telefone', Icons.phone, telefoneController, 1),
+              InputFieldEditWidget(
+                  'WebSite', Icons.web_asset, webSiteController, 1),
+              InputFieldEditWidget(
+                  'Sobre', Icons.description, sobreController, 3),
+              SizedBox(
+                height: 30,
+              ),
               SizedBox(
                 height: 35,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 40), // double.infinity is the width and 30 is the height
-                  ) ,
+                    minimumSize: Size(double.infinity,
+                        40), // double.infinity is the width and 30 is the height
+                  ),
                   onPressed: () {
-                    print("Nome recuperado: " + nomeController.text );
-                    print("Email recuperado: " + emailController.text );
-                    print("Localizacao recuperado: " + localizacaoController.text );
-                    print("Telefone recuperado: " + telefoneController.text );
-                    print("WebSite recuperado: " + webSiteController.text );
-                    print("Sobre recuperado: " + sobreController.text );
-
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                          'Informações salvas com sucesso',
+                        ),
+                        action: SnackBarAction(
+                          label: 'Fechar',
+                          onPressed: () {
+                            // Code to execute.
+                          },
+                        ),
+                      ),
+                    );
                   },
                   child: Text('Salvar'),
                 ),
