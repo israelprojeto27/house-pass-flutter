@@ -38,7 +38,8 @@ class DetailImovelWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 16),
                   )
                 ],
-              )
+              ),
+
             ],
           ),
         )

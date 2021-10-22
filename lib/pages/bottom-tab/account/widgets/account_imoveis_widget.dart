@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/imovel_model.dart';
 import 'package:housepass/pages/user/conquers/list_conquers_user_page.dart';
-import 'package:housepass/widgets/timeline/timeline_post_imovel_widget.dart';
+
+import 'account_imovel_detail_resume.dart';
 
 class AccountImoveisWidget extends StatelessWidget {
 
@@ -29,7 +30,7 @@ class AccountImoveisWidget extends StatelessWidget {
               children: [
                 Column(
                   children: imoveis
-                      .map((item) =>  TimelinePostImovelDescriptionWidget(imovel: item))
+                      .map((item) =>  AccountDetailImovelResume(imovel: item))
                       .toList(),
                 ),
                 SizedBox(

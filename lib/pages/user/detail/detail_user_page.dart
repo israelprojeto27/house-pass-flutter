@@ -27,7 +27,7 @@ class DetailUserPage extends StatelessWidget {
                   AccountProfileWidget(false),
                   AccountBasicInformationWidget(),
                   AccountConnectionsWidget(),
-                  AccountRecommendationsWidget(),
+                  AccountRecommendationsWidget(false),
                   AccountEvaluationsWidget(),
                   AccountConquersWidget(), // vai ser usador por usuarios perfil corretor
                   AccountEventsWidget(), // vai ser usador por usuarios perfil corretor e imobiliaria

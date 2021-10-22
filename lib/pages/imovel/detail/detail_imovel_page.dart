@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:housepass/pages/imovel/delete/confirm_delete_imovel_page.dart';
+import 'package:housepass/pages/imovel/edit/edit_imovel_step_one_page.dart';
+import 'package:housepass/pages/imovel/gallery_photos/gallery_photos_imovel_page.dart';
 import 'package:housepass/widgets/widget_detail_imovel_in_lists.dart';
 
 import 'card_avaliacoes_detail_imovel_widget.dart';
@@ -21,6 +24,20 @@ class _DetailImovelPageState extends State<DetailImovelPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Detalhes Imóvel'),
+          actions: [
+            PopupMenuButton<String>(
+              icon: Icon(Icons.more_vert),
+              onSelected: choiceAction,
+              itemBuilder: (BuildContext context) {
+                return Constants.choices.map((String choice) {
+                  return PopupMenuItem<String>(
+                    value: choice,
+                    child: Text(choice),
+                  );
+                }).toList();
+              },
+            ),
+          ],
         ),
         body: Container(
           margin: EdgeInsets.only(bottom: 20),
@@ -62,4 +79,36 @@ class _DetailImovelPageState extends State<DetailImovelPage> {
           ),
         ));
   }
+
+  void choiceAction(String value) {
+    if (value == 'Editar Imóvel') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => EditImovelStepOnePage()),
+      );
+    } else if (value == 'Galeria Fotos') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => GalleryPhotosImovelPage()),
+      );
+    }
+    else if (value == 'Excluir Imóvel') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ConfirmDeleteImovelPage()),
+      );
+    }
+  }
+}
+
+class Constants {
+  static const String EditarImovel = 'Editar Imóvel';
+  static const String GaleriaFotos = 'Galeria Fotos';
+  static const String ExcluirImovel = 'Excluir Imóvel';
+
+  static const List<String> choices = <String>[
+    EditarImovel,
+    GaleriaFotos,
+    ExcluirImovel
+  ];
 }

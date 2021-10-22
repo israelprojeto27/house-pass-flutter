@@ -23,7 +23,7 @@ class AccountPage extends StatelessWidget {
             AccountProfileWidget(true),
             AccountBasicInformationWidget(),
             AccountConnectionsWidget(),
-            AccountRecommendationsWidget(),
+            AccountRecommendationsWidget(true),
             AccountEvaluationsWidget(),
             AccountConquersWidget(), // vai ser usador por usuarios perfil corretor
             AccountEventsWidget(), // vai ser usador por usuarios perfil corretor e imobiliaria

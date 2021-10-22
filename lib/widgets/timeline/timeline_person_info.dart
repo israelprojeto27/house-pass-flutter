@@ -57,30 +57,19 @@ class _TimelineInfoPersonPostWidgetState
   }
 
   void choiceAction(String value) {
-    print('Opcao selecionada: ' + value);
     if (value == 'Detalhes Imóvel') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => DetailImovelPage()),
-      );
-    } else if (value == 'Editar Imóvel') {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => EditImovelStepOnePage()),
       );
     }
   }
 }
 
 class Constants {
-  static const String DetalhesImovel = 'Detalhes Imóvel';
-  static const String EditarImovel =
-      'Editar Imóvel'; // realizar um tratamento nesta opção para que seja exibido apenas para o dono do imovel
-  static const String ThirdItem = 'Third Item';
+  static const String DetalhesPost = 'Detalhes Post';
 
   static const List<String> choices = <String>[
-    DetalhesImovel,
-    EditarImovel,
-    ThirdItem,
+    DetalhesPost
   ];
 }

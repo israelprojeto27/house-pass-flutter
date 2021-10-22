@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/models/recomendacao_user_model.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
+import 'package:housepass/pages/user/recommendation/edit_list_recommendations_user_page.dart';
 import 'package:housepass/pages/user/recommendation/list_recommendations_user_page.dart';
 
+class AccountRecommendationsWidget extends StatefulWidget {
 
-class AccountRecommendationsWidget extends StatelessWidget {
+  final bool isAccount;
+  AccountRecommendationsWidget(this.isAccount);
+
+  @override
+  _AccountRecommendationsWidgetState createState() => _AccountRecommendationsWidgetState();
+}
+
+class _AccountRecommendationsWidgetState extends State<AccountRecommendationsWidget> {
 
   List<RecomendacaoUserModel> recomendacoes = _loadRecomendacoesUser();
 
@@ -19,9 +28,12 @@ class AccountRecommendationsWidget extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(top: 15, left: 10),
-            child: Text(
-              "Recomendações",
-              style: Theme.of(context).textTheme.title,
+            child: ListTile(
+              title: Text(
+                "Recomendações",
+                style: Theme.of(context).textTheme.title,
+              ),
+              trailing: _loadMenuVert(widget.isAccount, context)
             ),
           ),
           Container(
@@ -79,6 +91,16 @@ class AccountRecommendationsWidget extends StatelessWidget {
     );
   }
 
+  choiceAction(String value) {
+    print('Opcao selecionada: ' + value);
+    if (value == 'Editar Lista') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => EditListRecommendationsUserPage()),
+      );
+    }
+  }
+
   static List<RecomendacaoUserModel> _loadRecomendacoesUser() {
 
     List<RecomendacaoUserModel> list = [];
@@ -93,4 +115,32 @@ class AccountRecommendationsWidget extends StatelessWidget {
 
     return list;
   }
+
+  _loadMenuVert(bool isAccount, BuildContext context) {
+    if (widget.isAccount){
+      return PopupMenuButton<String>(
+        icon: Icon(Icons.more_vert, color: Colors.black,),
+        onSelected: choiceAction,
+        itemBuilder: (BuildContext context) {
+          return Constants.choices.map((String choice) {
+            return PopupMenuItem<String>(
+              value: choice,
+              child: Text(choice),
+            );
+          }).toList();
+        },
+      );
+    }
+    else {
+      return Text('');
+    }
+  }
+}
+
+class Constants {
+  static const String EditarListaRecomendacoes = 'Editar Lista';
+
+  static const List<String> choices = <String>[
+    EditarListaRecomendacoes
+  ];
 }
