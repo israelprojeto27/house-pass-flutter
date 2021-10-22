@@ -11,6 +11,22 @@ class PublishPage extends StatefulWidget {
 }
 
 class _PublishPageState extends State<PublishPage> {
+
+  TextStyle _styleButtonFilterSelected = TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 18);
+  TextStyle _styleButtonFilterUnSelected = TextStyle(color: Colors.white, fontSize: 14);
+
+  TextStyle _styleButtonTodas = TextStyle(color: Colors.white, fontSize: 14);
+  TextStyle _styleButtonImoveis = TextStyle(color: Colors.white, fontSize: 14);
+  TextStyle _styleButtonFotos = TextStyle(color: Colors.white, fontSize: 14);
+  TextStyle _styleButtonTextos = TextStyle(color: Colors.white, fontSize: 14);
+
+  int indexButton = 1;
+
+  @override
+  void initState() {
+    _styleButtonTodas = _styleButtonFilterSelected;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,20 +38,40 @@ class _PublishPageState extends State<PublishPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  child: Text('Todas'),
-                  onPressed: () {},
+                  child: Text('Todas', style: _styleButtonTodas),
+                  onPressed: () {
+                    setState(() {
+                      indexButton = 1;
+                      _updateStyleButtonsFilters(indexButton);
+                    });
+                  },
                 ),
                 ElevatedButton(
-                  child: Text('Imóveis'),
-                  onPressed: () {},
+                  child: Text('Imóveis',  style: _styleButtonImoveis),
+                  onPressed: () {
+                    setState(() {
+                      indexButton = 2;
+                      _updateStyleButtonsFilters(indexButton);
+                    });
+                  },
                 ),
                 ElevatedButton(
-                  child: Text('Fotos'),
-                  onPressed: () {},
+                  child: Text('Fotos',  style: _styleButtonFotos),
+                  onPressed: () {
+                    setState(() {
+                      indexButton = 3;
+                      _updateStyleButtonsFilters(indexButton);
+                    });
+                  },
                 ),
                 ElevatedButton(
-                  child: Text('Textos'),
-                  onPressed: () {},
+                  child: Text('Textos',  style: _styleButtonTextos),
+                  onPressed: () {
+                    setState(() {
+                      indexButton = 4;
+                      _updateStyleButtonsFilters(indexButton);
+                    });
+                  },
                 ),
               ],
             ),
@@ -130,4 +166,32 @@ class _PublishPageState extends State<PublishPage> {
           );
         });
   }
+  void _updateStyleButtonsFilters(int index) {
+    if (index == 1){
+      _styleButtonTodas   = _styleButtonFilterSelected;
+      _styleButtonImoveis = _styleButtonFilterUnSelected;
+      _styleButtonFotos   = _styleButtonFilterUnSelected;
+      _styleButtonTextos  = _styleButtonFilterUnSelected;
+    }
+    else if (index == 2){
+      _styleButtonTodas   = _styleButtonFilterUnSelected;
+      _styleButtonImoveis = _styleButtonFilterSelected;
+      _styleButtonFotos   = _styleButtonFilterUnSelected;
+      _styleButtonTextos  = _styleButtonFilterUnSelected;
+    }
+    else if (index == 3){
+      _styleButtonTodas   = _styleButtonFilterUnSelected;
+      _styleButtonImoveis = _styleButtonFilterUnSelected;
+      _styleButtonFotos   = _styleButtonFilterSelected;
+      _styleButtonTextos  = _styleButtonFilterUnSelected;
+    }
+    else if (index == 4){
+      _styleButtonTodas   = _styleButtonFilterUnSelected;
+      _styleButtonImoveis = _styleButtonFilterUnSelected;
+      _styleButtonFotos   = _styleButtonFilterUnSelected;
+      _styleButtonTextos  = _styleButtonFilterSelected;
+    }
+  }
 }
+
+

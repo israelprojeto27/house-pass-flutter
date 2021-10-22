@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/imovel/detail/detail_imovel_page.dart';
-import 'package:housepass/pages/imovel/edit/edit_imovel_page.dart';
+import 'package:housepass/pages/imovel/edit/edit_imovel_step_one_page.dart';
 import 'package:housepass/pages/user/detail/detail_user_page.dart';
 
 class TimelineInfoPersonPostWidget extends StatefulWidget {
@@ -66,7 +66,7 @@ class _TimelineInfoPersonPostWidgetState
     } else if (value == 'Editar Imóvel') {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => EditImovelPage()),
+        MaterialPageRoute(builder: (context) => EditImovelStepOnePage()),
       );
     }
   }

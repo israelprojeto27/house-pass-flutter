@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'create_imovel_step_four_page.dart';
 
+import 'edit_imovel_step_four_page.dart';
 
-class CreateImovelStepThreePage extends StatefulWidget {
+class EditImovelStepThreePage extends StatefulWidget {
   @override
-  _CreateImovelStepThreePageState createState() =>
-      _CreateImovelStepThreePageState();
+  _EditImovelStepThreePageState createState() => _EditImovelStepThreePageState();
 }
 
-class _CreateImovelStepThreePageState extends State<CreateImovelStepThreePage> {
+class _EditImovelStepThreePageState extends State<EditImovelStepThreePage> {
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Cadastro Imóvel - Passo 3')),
+        appBar: AppBar(title: Text('Edição Imóvel - Passo 3')),
         body: Form(
             key: _formKey,
             child: ListView(
@@ -34,7 +34,7 @@ class _CreateImovelStepThreePageState extends State<CreateImovelStepThreePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CreateImovelStepFourPage()),
+                            builder: (context) => EditImovelStepFourPage()),
                       );
                     },
                     child: Text('Avançar'),
