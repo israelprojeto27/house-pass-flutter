@@ -10,7 +10,7 @@ class MessagePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Messages"),
+          title: Text("Mensagens"),
         ),
         body: ListView.builder(
             itemCount: messages.length,
@@ -27,32 +27,45 @@ class MessagePage extends StatelessWidget {
                           spreadRadius: 2, blurRadius: 0, color: Colors.black12)
                     ]),
                     margin: EdgeInsets.all(7),
-                    child: Row(
-                      children: [
-                        Container(
-                            height: 70,
-                            width: 70,
-                            child: (ClipRRect(
-                              child: Image.asset(message.imageUser),
-                              borderRadius: BorderRadius.all(Radius.circular(40)),
-                            ))),
-                        Container(
-                          margin: EdgeInsets.only(top: 5),
-                          padding: EdgeInsets.only( left: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(message.nameUser, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                              SizedBox(height: 8,),
-                              Text(message.lastMessage, style: TextStyle(fontSize: 16),),
-                              Text(message.date)
-                            ],
-                          ),
-                        ),
-                      ],
-                    )),
+                    child: ListTile(
+                      leading: CircleAvatar(radius: (32),
+                          backgroundColor: Colors.white,
+                          child: ClipRRect(
+                            borderRadius:BorderRadius.circular(100),
+                            child: Image.asset(message.imageUser),
+                          )
+                      ),
+                      title:  Text(message.nameUser, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(message.lastMessage, style: TextStyle(fontSize: 16), maxLines: 3,),
+                          SizedBox(height:4 ),
+                          Text(message.date)
+                        ],
+                      ),
+                      trailing: PopupMenuButton<String>(
+                        icon: Icon(Icons.more_vert, color: Colors.black,),
+                        onSelected: choiceAction,
+                        itemBuilder: (BuildContext context) {
+                          return Constants.choices.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                      ),
+                    ),
+                ),
               );
             }));
+  }
+
+  void choiceAction(String value) {
+    if (value == 'Excluir Mensagem') {
+
+    }
   }
 
   static List<Message> _loadListMessages() {
@@ -71,5 +84,14 @@ class MessagePage extends StatelessWidget {
     return list;
   }
 }
+
+class Constants {
+  static const String ExcluirMensagem = 'Excluir Mensagem';
+
+  static const List<String> choices = <String>[
+    ExcluirMensagem
+  ];
+}
+
 
 

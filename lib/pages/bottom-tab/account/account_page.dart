@@ -27,12 +27,23 @@ class AccountPage extends StatelessWidget {
             AccountEvaluationsWidget(),
             AccountConquersWidget(), // vai ser usador por usuarios perfil corretor
             AccountEventsWidget(), // vai ser usador por usuarios perfil corretor e imobiliaria
-            AccountCorretoresByImobiliariaWidget(), // usado por usuarios perfil imobiliaria para listar seus corretores
+            _loadListCorretoresImobiliaria(),
+           // AccountCorretoresByImobiliariaWidget(), // usado por usuarios perfil imobiliaria para listar seus corretores
             AccountImoveisWidget(), // usuarios por todos usuarios para listar os seus imoveis
             AccountTimelineWidget()
           ],
         ),
       );
     });
+  }
+
+  _loadListCorretoresImobiliaria() {
+    bool isImobiliaria = true;
+    if (isImobiliaria){
+      return AccountCorretoresByImobiliariaWidget();
+    }
+    else {
+      return Container();
+    }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'item_filter_quant_search_page.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/item_filter_quant_search_page.dart';
 
 
 class FilterQuantItemsSearchPage  extends StatefulWidget {

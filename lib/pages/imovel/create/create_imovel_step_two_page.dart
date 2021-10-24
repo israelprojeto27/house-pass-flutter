@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_quant_items_search_page_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_quant_items_search_page_widget.dart';
 import 'create_imovel_step_three_page.dart';
 
 class CreateImovelStepTwoPage extends StatefulWidget {

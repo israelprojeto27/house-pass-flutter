@@ -65,8 +65,6 @@ class NotificationsPage extends StatelessWidget {
                 ),
               );
             }));
-
-
   }
 
   void choiceAction(String value) {

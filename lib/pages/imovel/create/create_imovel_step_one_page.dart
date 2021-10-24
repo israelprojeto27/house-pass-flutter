@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_acao_imovel_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_tipo_imovel_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_acao_imovel_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_tipo_imovel_widget.dart';
 
 import 'create_imovel_step_two_page.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housepass/pages/bottom-tab/search/search_tab_imoveis_page.dart';
+import 'package:housepass/pages/bottom-tab/search/search_tab_usuarios_page.dart';
 
 
 class SearchPage extends StatefulWidget {
@@ -31,9 +32,7 @@ class _SearchPageState extends State<SearchPage> {
         body: TabBarView(
           children: [
             SearchTabImoveisPage(),
-            Center(
-              child: Text('Tela de usuarios'),
-            ),
+            SearchTabUsuariosPage(),
           ],
         )
       ),

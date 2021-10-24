@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/button_search_page_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_acao_imovel_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_price_search_page_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_quant_items_search_page_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_tipo_imovel_widget.dart';
-import 'package:housepass/pages/bottom-tab/search/widget/filter_area_search_page.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/button_search_page_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_acao_imovel_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_price_search_page_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_quant_items_search_page_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_tipo_imovel_widget.dart';
+import 'package:housepass/pages/bottom-tab/search/widget/imoveis/filter_area_search_page.dart';
 
 
 class SearchTabImoveisPage extends StatefulWidget {

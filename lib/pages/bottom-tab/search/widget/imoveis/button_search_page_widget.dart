@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../result_search_imoveis_page.dart';
+import '../../result_search_imoveis_page.dart';
+
+
 
 class ButtonSearchPageWidget extends StatefulWidget {
 
@@ -98,19 +100,6 @@ class _ButtonSearchPageWidgetState extends State<ButtonSearchPageWidget> {
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(
                         onPressed: () {
-                          print("Localizacao informada: " + _controller.text.toString());
-                          print("Valor maximo: " + widget.priceValue.end.toString());
-                          print("Valor minimo: " + widget.priceValue.start.toString());
-                          print("Tipo Acao: " + widget.tipoAcao);
-                          print("Index Tipo Imovel: " + widget.indexTipoImovel.toString());
-                          print("Quant. Garagem: " + widget.quantGaragem);
-                          print("Quant. Banheiro: " + widget.quantBanheiro);
-                          print("Quant. Suite: " + widget.quantSuite);
-                          print("Quant. Quarto: " + widget.quantQuarto);
-
-                          print("Area maximo: " + widget.areaValue.end.toString());
-                          print("Area minimo: " + widget.areaValue.start.toString());
-
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => ResultSearchImoveisPage()),
