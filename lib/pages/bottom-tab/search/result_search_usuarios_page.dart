@@ -9,7 +9,7 @@ class ResultSearchUsuariosPage extends StatefulWidget {
 
 class _ResultSearchUsuariosPageState extends State<ResultSearchUsuariosPage> {
 
-
+// other
   List<UserResumeModel> users = _loadUser();
 
   @override
